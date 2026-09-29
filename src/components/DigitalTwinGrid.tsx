@@ -82,12 +82,12 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
             {t.digitalFarmTwinSub}
           </p>
         </div>
-        <span className="text-[11px] font-bold text-eco-800 bg-eco-50 px-3 py-1 rounded-full border border-eco-200 shadow-2xs">
+        <span className="text-[11px] font-bold text-sky-800 bg-sky-50 px-3 py-1 rounded-full border border-sky-200 shadow-2xs">
           {fields.length} Active Zones
         </span>
       </div>
 
-      {/* Grid of 6 Farm Plots */}
+      {/* Grid of Farm Plots */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {fields.map((field) => {
           const stressBadge = getStressBadge(field.currentStress);
@@ -100,10 +100,10 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
               onClick={() => handleFieldClick(field.id)}
               className={`relative bg-white rounded-2xl p-5 border cursor-pointer transition-all duration-200 hover:shadow-md ${
                 isSelected
-                  ? 'border-aqua-500 ring-2 ring-aqua-400/40 shadow-sm'
+                  ? 'border-cyan-500 ring-2 ring-cyan-400/40 shadow-sm'
                   : isTopPriority
                   ? 'border-amber-300/80 bg-amber-50/15 hover:border-amber-400'
-                  : 'border-slate-200/90 hover:border-slate-300 shadow-2xs'
+                  : 'border-sky-100/90 hover:border-sky-300 shadow-2xs'
               }`}
             >
               {/* Top Row: Field ID, Crop, and Stress Badge */}
@@ -112,7 +112,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                   <div className={`p-2 rounded-xl border ${
                     isTopPriority 
                       ? 'bg-amber-100/80 text-amber-800 border-amber-200' 
-                      : 'bg-eco-50 text-eco-800 border-eco-100'
+                      : 'bg-sky-50 text-sky-800 border-sky-100'
                   }`}>
                     <Sprout className="w-4 h-4" />
                   </div>
@@ -128,7 +128,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                     <p className="text-xs text-slate-500 flex items-center space-x-1.5 flex-wrap">
                       <span className="font-semibold text-slate-700">{field.crop}</span> • <span className="italic">{field.growthStage}</span>
                       {field.visualAnalysis && (
-                        <span className="inline-flex items-center space-x-0.5 px-1.5 py-0.2 rounded-md bg-aqua-100 text-aqua-900 text-[9px] font-extrabold border border-aqua-200">
+                        <span className="inline-flex items-center space-x-0.5 px-1.5 py-0.2 rounded-md bg-cyan-50 text-cyan-900 text-[9px] font-extrabold border border-cyan-200">
                           <span>📷 Visual</span>
                         </span>
                       )}
@@ -143,7 +143,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
               </div>
 
               {/* Moisture Bar Gauge */}
-              <div className="my-3 bg-slate-50/90 rounded-xl p-3 border border-slate-100">
+              <div className="my-3 bg-sky-50/60 rounded-xl p-3 border border-sky-100/80">
                 <div className="flex justify-between items-center text-xs mb-1.5">
                   <span className="text-slate-500 font-semibold">{t.soilMoisture}:</span>
                   <span className="font-extrabold font-mono text-slate-900">
@@ -165,10 +165,10 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
               </div>
 
               {/* Allocation & Priority Details */}
-              <div className="grid grid-cols-2 gap-2 pt-2.5 border-t border-slate-100 text-xs">
+              <div className="grid grid-cols-2 gap-2 pt-2.5 border-t border-sky-100/70 text-xs">
                 <div>
                   <span className="text-[11px] font-bold text-slate-400 block uppercase tracking-tight">{t.allocationL}</span>
-                  <span className="font-extrabold text-aqua-800 text-sm font-mono block">
+                  <span className="font-extrabold text-sky-800 text-sm font-mono block">
                     {field.allocation.toLocaleString()} L
                   </span>
                   <span className="text-[10px] text-slate-400 font-mono block">
@@ -183,19 +183,19 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                     </span>
                     <span className="text-[10px] text-slate-400 font-mono">/ 100</span>
                   </div>
-                  <span className="text-[10px] text-eco-700 font-semibold block">
+                  <span className="text-[10px] text-sky-700 font-semibold block">
                     Marginal Benefit: {field.marginalBenefit}/100
                   </span>
                 </div>
               </div>
 
               {/* Bottom Quick Horizon Tag */}
-              <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 bg-slate-50/80 px-3 py-1.5 rounded-lg border border-slate-100">
+              <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 bg-sky-50/70 px-3 py-1.5 rounded-lg border border-sky-100">
                 <span className="flex items-center text-slate-600">
                   <Clock className="w-3.5 h-3.5 mr-1 text-slate-400" />
                   +12h Horizon: <strong className="ml-1 text-slate-900 font-semibold">{field.futureStress.plus12h}</strong>
                 </span>
-                <span className="flex items-center text-aqua-700 font-bold group-hover:translate-x-0.5 transition-transform">
+                <span className="flex items-center text-sky-700 font-bold group-hover:translate-x-0.5 transition-transform">
                   Telemetry <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                 </span>
               </div>
@@ -210,7 +210,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
           <div className="flex items-start justify-between border-b border-slate-800 pb-4">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-aqua-500/20 text-aqua-300 border border-aqua-500/40 uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 uppercase tracking-wider">
                   FIELD INTELLIGENCE DOSSIER
                 </span>
                 <span className="text-xs text-slate-400 font-mono">ID: {selectedField.id}</span>
@@ -261,13 +261,13 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
             {/* Decision & Marginal Benefit */}
             <div className="bg-slate-800/80 rounded-2xl p-4.5 border border-slate-700/70">
               <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center">
-                <Droplet className="w-4 h-4 mr-1.5 text-aqua-400" />
+                <Droplet className="w-4 h-4 mr-1.5 text-cyan-400" />
                 Optimization Metrics
               </h5>
               <div className="space-y-2.5 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Recommended Allocation:</span>
-                  <span className="font-extrabold text-aqua-300 text-sm font-mono">
+                  <span className="font-extrabold text-cyan-300 text-sm font-mono">
                     {selectedField.allocation.toLocaleString()} L
                   </span>
                 </div>
@@ -281,7 +281,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Marginal Water Benefit:</span>
-                  <span className="font-bold text-emerald-400 font-mono">{selectedField.marginalBenefit}/100</span>
+                  <span className="font-bold text-cyan-400 font-mono">{selectedField.marginalBenefit}/100</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Decision Confidence:</span>
@@ -293,13 +293,13 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
             {/* Why This Decision Factors */}
             <div className="bg-slate-800/80 rounded-2xl p-4.5 border border-slate-700/70">
               <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center">
-                <ShieldCheck className="w-4 h-4 mr-1.5 text-aqua-400" />
+                <ShieldCheck className="w-4 h-4 mr-1.5 text-cyan-400" />
                 Why this allocation?
               </h5>
               <ul className="space-y-2 text-xs text-slate-300">
                 {selectedField.reasons.map((r, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="text-aqua-400 mr-2 font-bold">•</span>
+                    <span className="text-cyan-400 mr-2 font-bold">•</span>
                     <span>{r}</span>
                   </li>
                 ))}
@@ -309,11 +309,11 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
 
           {/* Field Visual Observation Card (if present) */}
           {selectedField.visualAnalysis && (
-            <div className="mt-5 p-4.5 rounded-2xl bg-slate-800/90 border border-aqua-500/40 shadow-inner">
+            <div className="mt-5 p-4.5 rounded-2xl bg-slate-800/90 border border-cyan-500/40 shadow-inner">
               <div className="flex items-center justify-between pb-3 border-b border-slate-700/80 mb-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-sm">📷</span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-aqua-300">
+                  <span className="text-xs font-bold uppercase tracking-wider text-cyan-300">
                     Field Visual Analysis (Qualitative Observation)
                   </span>
                 </div>
@@ -338,7 +338,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                     </div>
                     <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
                       <span className="text-[10px] text-slate-400 block">Surface Moisture</span>
-                      <span className="font-extrabold text-aqua-300 mt-0.5 block">{selectedField.visualAnalysis.surfaceCondition}</span>
+                      <span className="font-extrabold text-cyan-300 mt-0.5 block">{selectedField.visualAnalysis.surfaceCondition}</span>
                     </div>
                     <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
                       <span className="text-[10px] text-slate-400 block">Visible Stress</span>

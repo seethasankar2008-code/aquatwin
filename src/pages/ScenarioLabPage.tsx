@@ -115,19 +115,19 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
   return (
     <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-300">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-eco-950 via-eco-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-eco-700/60 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-aqua-500/10 blur-3xl pointer-events-none" />
+      <div className="bg-gradient-to-r from-sky-950 via-sky-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-sky-800/60 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-aqua-500/20 text-aqua-300 border border-aqua-400/40 text-xs font-bold mb-2.5">
-              <Sparkles className="w-3.5 h-3.5 text-aqua-400" />
+            <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 text-xs font-bold mb-2.5">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
               <span>JUDGING SHOWCASE: 30% ADAPTIVENESS TO CHANGE</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
               {t.scenarioLabTitle}
             </h2>
-            <p className="text-xs sm:text-sm text-eco-200 mt-1.5 max-w-2xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-sky-200 mt-1.5 max-w-2xl leading-relaxed">
               {t.scenarioLabSub} Watch the priority scores invert, the resilience reserve buffer scale, and water redirect to high marginal-benefit crops.
             </p>
           </div>
@@ -162,7 +162,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
                 onClick={() => onApplyPreset(preset.id)}
                 className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden group shadow-2xs ${
                   isActive
-                    ? 'ring-2 ring-eco-800 border-eco-800 bg-white shadow-md'
+                    ? 'ring-2 ring-sky-800 border-sky-800 bg-white shadow-md'
                     : preset.color
                 }`}
               >
@@ -174,7 +174,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
                     {preset.badge}
                   </span>
                 </div>
-                <h4 className={`font-extrabold text-xs text-slate-900 group-hover:text-eco-950 transition-colors ${language === 'ta' ? 'font-tamil' : ''}`}>
+                <h4 className={`font-extrabold text-xs text-slate-900 group-hover:text-sky-950 transition-colors ${language === 'ta' ? 'font-tamil' : ''}`}>
                   {preset.name}
                 </h4>
                 <p className="text-[11px] text-slate-600 mt-1 font-medium">{preset.desc}</p>
@@ -185,10 +185,10 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
       </div>
 
       {/* Interactive Controls & Live Sliders */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs">
-        <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-slate-100">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-sky-100 shadow-xs">
+        <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-sky-100">
           <div className="flex items-center space-x-2.5">
-            <div className="p-1.5 rounded-lg bg-eco-100 text-eco-800">
+            <div className="p-1.5 rounded-lg bg-sky-100 text-sky-800">
               <SlidersHorizontal className="w-4 h-4" />
             </div>
             <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-900">
@@ -207,7 +207,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
               <span className={`font-bold text-slate-700 ${language === 'ta' ? 'font-tamil' : ''}`}>
                 {t.availableWaterSlider}
               </span>
-              <span className="font-extrabold font-mono text-aqua-800 text-sm">
+              <span className="font-extrabold font-mono text-sky-800 text-sm">
                 {waterSlider.toLocaleString()} L
               </span>
             </div>
@@ -314,7 +314,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
           <button
             onClick={handleAdaptClick}
             disabled={isAdapting}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-eco-900 via-eco-800 to-aqua-800 hover:from-eco-800 hover:to-aqua-700 text-white font-extrabold text-sm shadow-md flex items-center justify-center space-x-2.5 transition-all active:scale-98"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-sky-900 via-sky-800 to-cyan-600 hover:from-sky-800 hover:to-cyan-500 text-white font-extrabold text-sm shadow-md flex items-center justify-center space-x-2.5 transition-all active:scale-98"
           >
             {isAdapting ? (
               <RotateCcw className="w-4 h-4 animate-spin" />
@@ -329,14 +329,14 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
       </div>
 
       {/* BEFORE VS AFTER ADAPTATION (Section 17 requirement) */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-sky-100 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-3.5 border-b border-slate-100">
           <div>
             <h3 className={`text-base font-extrabold text-slate-900 tracking-tight ${language === 'ta' ? 'font-tamil' : ''}`}>
               {t.beforeVsAfter}
             </h3>
             <p className="text-xs text-slate-500">
-              Precise field-level water reallocation under active scenario: <strong className="text-eco-900 font-mono">{farmState.activeScenario}</strong>
+              Precise field-level water reallocation under active scenario: <strong className="text-sky-950 font-mono">{farmState.activeScenario}</strong>
             </p>
           </div>
 
@@ -345,7 +345,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
               Before: {beforeAvailable.toLocaleString()} L
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="px-3 py-1 rounded-lg bg-aqua-50 text-aqua-950 font-bold border border-aqua-200">
+            <span className="px-3 py-1 rounded-lg bg-sky-50 text-sky-950 font-bold border border-sky-200">
               Now: {farmState.waterBudget.availableWater.toLocaleString()} L
             </span>
           </div>
@@ -359,7 +359,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
                 <th className="py-3 px-3.5">Field / Plot</th>
                 <th className="py-3 px-3.5">Crop & Stage</th>
                 <th className="py-3 px-3.5 text-right">Before Alloc</th>
-                <th className="py-3 px-3.5 text-right text-aqua-950 bg-aqua-50/50">After Alloc</th>
+                <th className="py-3 px-3.5 text-right text-sky-950 bg-sky-50/60">After Alloc</th>
                 <th className="py-3 px-3.5 text-right">Net Change</th>
                 <th className="py-3 px-3.5 text-center">Priority</th>
                 <th className="py-3 px-3.5">Marginal Benefit Rationale</th>
@@ -373,7 +373,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
                 return (
                   <tr
                     key={field.id}
-                    className="hover:bg-slate-50/90 transition-colors cursor-pointer"
+                    className="hover:bg-sky-50/40 transition-colors cursor-pointer"
                     onClick={() => onSelectField?.(field.id)}
                   >
                     <td className="py-3.5 px-3.5 font-bold text-slate-900 whitespace-nowrap">
@@ -385,7 +385,7 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
                     <td className="py-3.5 px-3.5 text-right font-mono font-medium text-slate-500">
                       {prev.toLocaleString()} L
                     </td>
-                    <td className="py-3.5 px-3.5 text-right font-mono font-extrabold text-aqua-950 bg-aqua-50/40">
+                    <td className="py-3.5 px-3.5 text-right font-mono font-extrabold text-sky-950 bg-sky-50/50">
                       {field.allocation.toLocaleString()} L
                     </td>
                     <td className="py-3.5 px-3.5 text-right font-mono font-extrabold whitespace-nowrap">
@@ -425,11 +425,11 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
         </div>
 
         {/* Reserve Comparison Footnote */}
-        <div className="mt-5 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs bg-eco-50/60 p-4 rounded-2xl border border-eco-200/70">
-          <div className="flex items-center space-x-2 text-eco-950 font-medium">
-            <ShieldCheck className="w-4 h-4 text-emerald-700" />
+        <div className="mt-5 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs bg-sky-50/60 p-4 rounded-2xl border border-sky-200/70">
+          <div className="flex items-center space-x-2 text-sky-950 font-medium">
+            <ShieldCheck className="w-4 h-4 text-cyan-700" />
             <span className="font-bold">Resilience Reserve Protected:</span>
-            <span className="font-mono font-extrabold text-emerald-800 text-sm">
+            <span className="font-mono font-extrabold text-cyan-800 text-sm">
               {farmState.waterBudget.reserveWater.toLocaleString()} L
             </span>
             <span className="text-slate-500">
@@ -446,8 +446,8 @@ export const ScenarioLabPage: React.FC<ScenarioLabPageProps> = ({
       {/* WHY ALLOCATION CHANGED CARD */}
       <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-7 border border-slate-700/80 shadow-xl">
         <div className="flex items-center space-x-2 mb-3.5">
-          <Sparkles className="w-4 h-4 text-aqua-400" />
-          <h4 className={`text-sm font-extrabold uppercase tracking-wider text-aqua-300 ${language === 'ta' ? 'font-tamil' : ''}`}>
+          <Sparkles className="w-4 h-4 text-cyan-400" />
+          <h4 className={`text-sm font-extrabold uppercase tracking-wider text-cyan-300 ${language === 'ta' ? 'font-tamil' : ''}`}>
             {t.whyAllocationChanged}
           </h4>
         </div>

@@ -32,7 +32,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
       {/* Header */}
       <div className="pb-4 border-b border-slate-200">
         <div className="flex items-center space-x-2.5">
-          <span className="p-2 rounded-xl bg-eco-100 text-eco-800 border border-eco-200 shadow-2xs">
+          <span className="p-2 rounded-xl bg-sky-100 text-sky-800 border border-sky-200 shadow-2xs">
             <ShieldCheck className="w-5 h-5" />
           </span>
           <div>
@@ -47,7 +47,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
       </div>
 
       {/* DYNAMIC WATER BANK & WATER JOURNEY (Section 10, 11, 24) */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-sky-100 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-3.5 border-b border-slate-100">
           <div>
             <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-900">
@@ -57,7 +57,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
               Deterministic conservation: Available = Allocated + Resilience Reserve + Uncommitted
             </p>
           </div>
-          <span className="font-mono text-xs font-extrabold px-3 py-1.5 bg-aqua-50 text-aqua-950 rounded-xl border border-aqua-200 shadow-2xs">
+          <span className="font-mono text-xs font-extrabold px-3 py-1.5 bg-cyan-50 text-cyan-950 rounded-xl border border-cyan-200 shadow-2xs">
             Total Pool: {waterBudget.availableWater.toLocaleString()} L
           </span>
         </div>
@@ -66,7 +66,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
         <div className="space-y-3 mb-6">
           <div className="h-7 w-full rounded-2xl bg-slate-100 p-1 flex gap-1.5 overflow-hidden border border-slate-200/80 shadow-inner">
             <div
-              className="bg-gradient-to-r from-aqua-600 to-aqua-500 rounded-xl h-full transition-all duration-500 relative group flex items-center justify-center text-[10px] font-bold text-white font-mono"
+              className="bg-gradient-to-r from-cyan-600 to-sky-500 rounded-xl h-full transition-all duration-500 relative group flex items-center justify-center text-[10px] font-bold text-white font-mono"
               style={{ width: `${allocatedPct}%` }}
               title={`Allocated: ${waterBudget.allocatedWater.toLocaleString()} L (${allocatedPct}%)`}
             >
@@ -92,7 +92,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
 
           <div className="flex flex-wrap items-center justify-between text-xs text-slate-600 font-medium px-1">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 rounded-full bg-aqua-600 shrink-0" />
+              <span className="w-3 h-3 rounded-full bg-cyan-600 shrink-0" />
               <span>Allocated: <strong className="text-slate-900 font-mono font-bold">{waterBudget.allocatedWater.toLocaleString()} L</strong> ({allocatedPct}%)</span>
             </div>
             <div className="flex items-center space-x-2">
@@ -107,16 +107,16 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
         </div>
 
         {/* Water Journey Flow (Section 24 in prompt) */}
-        <div className="bg-slate-50/90 rounded-2xl p-4.5 border border-slate-200">
+        <div className="bg-sky-50/50 rounded-2xl p-4.5 border border-sky-100">
           <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
             Water Journey: Distribution Flow Architecture
           </h4>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 text-xs">
             {farmState.fields.map((f) => (
-              <div key={f.id} className="bg-white p-3 rounded-xl border border-slate-200/90 text-center shadow-2xs">
+              <div key={f.id} className="bg-white p-3 rounded-xl border border-sky-100 text-center shadow-2xs">
                 <span className="text-[10px] text-slate-400 block truncate">{f.name.split(' - ')[0]}</span>
                 <span className="font-extrabold text-slate-800 text-[11px] block truncate">{f.crop}</span>
-                <span className="font-extrabold text-aqua-800 font-mono text-xs block mt-1">
+                <span className="font-extrabold text-sky-800 font-mono text-xs block mt-1">
                   {f.allocation.toLocaleString()} L
                 </span>
               </div>
@@ -140,11 +140,11 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
       </div>
 
       {/* SIMULATED BASELINE COMPARISON (Section 25 & 57 in prompt) */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-sky-100 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-3.5 border-b border-slate-100">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-purple-100 text-purple-800 uppercase tracking-wider">
+              <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-sky-100 text-sky-800 uppercase tracking-wider">
                 SIMULATED COMPARISON
               </span>
               <h3 className={`text-base font-extrabold text-slate-900 ${language === 'ta' ? 'font-tamil' : ''}`}>
@@ -234,10 +234,10 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
           </div>
 
           {/* AquaTwin System */}
-          <div className="bg-gradient-to-br from-eco-50 via-white to-aqua-50 rounded-2xl p-4.5 border-2 border-eco-600 shadow-md relative overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-br from-sky-50/80 via-white to-cyan-50/80 rounded-2xl p-4.5 border-2 border-sky-600 shadow-md relative overflow-hidden flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3.5">
-                <h4 className="font-extrabold text-xs text-eco-950 uppercase tracking-wide flex items-center">
+                <h4 className="font-extrabold text-xs text-sky-950 uppercase tracking-wide flex items-center">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-1.5" />
                   {t.aquaTwinSystem}
                 </h4>
@@ -247,25 +247,25 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
               </div>
               <div className="space-y-2.5 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-eco-950 font-semibold">Water Allocated:</span>
+                  <span className="text-sky-950 font-semibold">Water Allocated:</span>
                   <span className="font-mono font-extrabold text-slate-900">{comparison.aquaTwin.waterAllocated.toLocaleString()} L</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-eco-950 font-semibold">Useful Water Delivered:</span>
+                  <span className="text-sky-950 font-semibold">Useful Water Delivered:</span>
                   <span className="font-mono font-extrabold text-emerald-700">{comparison.aquaTwin.usefulWaterDelivered.toLocaleString()} L</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-eco-950 font-semibold">Unmet Deficit Demand:</span>
+                  <span className="text-sky-950 font-semibold">Unmet Deficit Demand:</span>
                   <span className="font-mono font-extrabold text-slate-700">{comparison.aquaTwin.unmetDemand.toLocaleString()} L</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-eco-950 font-semibold">Stress Exposure Hours:</span>
+                  <span className="text-sky-950 font-semibold">Stress Exposure Hours:</span>
                   <span className="font-mono font-extrabold text-emerald-700">{comparison.aquaTwin.stressHours} hrs</span>
                 </div>
               </div>
             </div>
-            <div className="pt-3 border-t border-eco-200 mt-3 flex justify-between text-xs">
-              <span className="text-eco-950 font-bold">Reserve Protected:</span>
+            <div className="pt-3 border-t border-sky-200 mt-3 flex justify-between text-xs">
+              <span className="text-sky-950 font-bold">Reserve Protected:</span>
               <span className="font-mono font-extrabold text-emerald-700 text-sm">{comparison.aquaTwin.reserveProtected.toLocaleString()} L</span>
             </div>
           </div>
@@ -275,7 +275,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
       {/* SECONDARY ECO-CENTRIC MODULES (Sections 26, 27, 28) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4.5">
         {/* Rain Opportunity & Harvesting */}
-        <div className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-xs text-xs">
+        <div className="bg-white rounded-3xl p-5 border border-sky-100 shadow-xs text-xs">
           <div className="flex items-center space-x-2 text-blue-700 mb-2.5">
             <div className="p-1.5 rounded-lg bg-blue-50 border border-blue-100">
               <CloudRain className="w-4 h-4" />
@@ -306,7 +306,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
         </div>
 
         {/* Water Delivery Integrity & Loss Monitor */}
-        <div className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-xs text-xs">
+        <div className="bg-white rounded-3xl p-5 border border-sky-100 shadow-xs text-xs">
           <div className="flex items-center space-x-2 text-cyan-700 mb-2.5">
             <div className="p-1.5 rounded-lg bg-cyan-50 border border-cyan-100">
               <Droplet className="w-4 h-4" />
@@ -338,7 +338,7 @@ export const ResiliencePage: React.FC<ResiliencePageProps> = ({ farmState, langu
         </div>
 
         {/* Groundwater Safety */}
-        <div className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-xs text-xs">
+        <div className="bg-white rounded-3xl p-5 border border-sky-100 shadow-xs text-xs">
           <div className="flex items-center space-x-2 text-amber-700 mb-2.5">
             <div className="p-1.5 rounded-lg bg-amber-50 border border-amber-100">
               <AlertTriangle className="w-4 h-4" />

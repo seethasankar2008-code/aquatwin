@@ -121,7 +121,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-[#f7faf8] text-slate-800 flex flex-col font-sans ${language === 'ta' ? 'font-tamil' : ''}`}>
+    <div className={`min-h-screen bg-[#f0f9ff] text-slate-900 flex flex-col font-sans ${language === 'ta' ? 'font-tamil' : ''}`}>
       {/* Sticky Header */}
       <Header
         currentTab={currentTab}
@@ -235,7 +235,7 @@ export const App: React.FC = () => {
           </div>
 
           <div className="text-center md:text-right text-[11px] space-y-0.5">
-            <p className="font-bold text-eco-900">
+            <p className="font-bold text-sky-950">
               Hack4Values – UHV Cell Hackathon • Theme: Harmony with Nature (Eco-Centric Agriculture)
             </p>
             <p className="text-slate-400 flex items-center justify-center md:justify-end space-x-1">

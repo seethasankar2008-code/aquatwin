@@ -33,15 +33,15 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: 'L',
       sub: `${waterBudget.allocatedWater.toLocaleString()} L Allocated`,
       icon: Droplet,
-      iconColor: 'text-aqua-700 bg-aqua-50 border-aqua-100',
+      iconColor: 'text-sky-700 bg-sky-50 border-sky-200',
     },
     {
       label: t.predictedDemand,
       value: totalDemand.toLocaleString(),
       unit: 'L',
-      sub: `Across 6 active plots`,
+      sub: `Across ${fields.length} active plots`,
       icon: TrendingUp,
-      iconColor: 'text-eco-700 bg-eco-50 border-eco-100',
+      iconColor: 'text-cyan-700 bg-cyan-50 border-cyan-200',
     },
     {
       label: t.deficit,
@@ -49,7 +49,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: 'Deficit',
       sub: `Avg Moisture: ${avgMoisture}%`,
       icon: Gauge,
-      iconColor: 'text-amber-700 bg-amber-50 border-amber-100',
+      iconColor: 'text-amber-700 bg-amber-50 border-amber-200',
     },
     {
       label: t.farmRisk,
@@ -57,7 +57,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       badgeColor: riskBadge.color,
       sub: `${weather.temperature}°C • ET0 ${weather.et0} mm/d`,
       icon: AlertTriangle,
-      iconColor: 'text-orange-700 bg-orange-50 border-orange-100',
+      iconColor: 'text-orange-700 bg-orange-50 border-orange-200',
     },
     {
       label: t.forecastConfidence,
@@ -65,15 +65,15 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: '',
       sub: `Rain Prob: ${weather.rainfallProbability}% (${weather.uncertaintyLevel})`,
       icon: CloudRain,
-      iconColor: 'text-blue-700 bg-blue-50 border-blue-100',
+      iconColor: 'text-blue-700 bg-blue-50 border-blue-200',
     },
     {
       label: t.resilienceReserve,
       value: waterBudget.reserveWater.toLocaleString(),
       unit: 'L',
-      sub: `${Math.round((waterBudget.reserveWater / waterBudget.availableWater) * 100)}% dynamic protection`,
+      sub: `${Math.round((waterBudget.reserveWater / waterBudget.availableWater) * 100)}% dynamic buffer`,
       icon: ShieldCheck,
-      iconColor: 'text-emerald-700 bg-emerald-50 border-emerald-100',
+      iconColor: 'text-teal-700 bg-teal-50 border-teal-200',
     },
   ];
 
@@ -84,7 +84,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
         return (
           <div
             key={idx}
-            className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-2xs hover:shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between"
+            className="bg-white rounded-2xl p-4 border border-sky-100 shadow-2xs hover:shadow-xs hover:border-sky-300 transition-all flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-2">

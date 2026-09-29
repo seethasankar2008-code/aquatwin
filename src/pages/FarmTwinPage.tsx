@@ -25,7 +25,7 @@ export const FarmTwinPage: React.FC<FarmTwinPageProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
           <div className="flex items-center space-x-2.5">
-            <span className="p-2 rounded-xl bg-eco-100 text-eco-800 border border-eco-200 shadow-2xs">
+            <span className="p-2 rounded-xl bg-sky-100 text-sky-800 border border-sky-200 shadow-2xs">
               <Sprout className="w-5 h-5" />
             </span>
             <h2 className={`text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight ${language === 'ta' ? 'font-tamil' : ''}`}>
@@ -60,9 +60,9 @@ export const FarmTwinPage: React.FC<FarmTwinPageProps> = ({
       />
 
       {/* Environmental & Soil Diagnostics Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4.5 bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs text-xs">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4.5 bg-white rounded-3xl p-6 border border-sky-100 shadow-xs text-xs">
         <div className="flex items-start space-x-3.5 p-1">
-          <div className="p-2.5 rounded-xl bg-aqua-50 text-aqua-700 border border-aqua-100 shrink-0">
+          <div className="p-2.5 rounded-xl bg-sky-50 text-sky-700 border border-sky-100 shrink-0">
             <Droplets className="w-4 h-4" />
           </div>
           <div>

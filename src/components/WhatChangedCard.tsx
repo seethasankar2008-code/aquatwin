@@ -48,7 +48,7 @@ export const WhatChangedCard: React.FC<WhatChangedCardProps> = ({ farmState, lan
   ];
 
   return (
-    <div className="bg-gradient-to-br from-amber-500/10 via-white to-eco-50/50 rounded-2xl p-5 sm:p-6 border border-amber-200/90 shadow-xs">
+    <div className="bg-gradient-to-br from-amber-500/10 via-white to-sky-50/50 rounded-2xl p-5 sm:p-6 border border-amber-200/90 shadow-xs">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-amber-200/60">
         <div className="flex items-center space-x-2">
           <div className="p-1.5 rounded-lg bg-amber-500 text-white">
@@ -76,7 +76,7 @@ export const WhatChangedCard: React.FC<WhatChangedCardProps> = ({ farmState, lan
           return (
             <div
               key={i}
-              className="bg-white rounded-xl p-3 border border-slate-200 shadow-2xs"
+              className="bg-white rounded-xl p-3 border border-sky-100 shadow-2xs"
             >
               <div className="flex items-center space-x-1.5 text-slate-500 text-xs mb-1.5">
                 <Icon className="w-3.5 h-3.5 text-amber-600" />

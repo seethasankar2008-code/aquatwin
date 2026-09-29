@@ -108,10 +108,10 @@ export const HackathonDemoScriptModal: React.FC<HackathonDemoScriptModalProps> =
           {steps.map((s) => (
             <div
               key={s.step}
-              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-eco-300 transition-colors"
+              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 transition-colors"
             >
               <div className="flex items-baseline justify-between mb-1.5">
-                <span className="font-extrabold text-xs text-eco-950">
+                <span className="font-extrabold text-xs text-sky-950">
                   Step {s.step}: {s.title}
                 </span>
                 <button
@@ -119,7 +119,7 @@ export const HackathonDemoScriptModal: React.FC<HackathonDemoScriptModalProps> =
                     onJumpToTab(s.tab);
                     onClose();
                   }}
-                  className="text-[11px] font-bold text-aqua-800 hover:text-aqua-950 flex items-center"
+                  className="text-[11px] font-bold text-sky-700 hover:text-sky-900 flex items-center"
                 >
                   Jump to screen <ChevronRight className="w-3 h-3 ml-0.5" />
                 </button>
@@ -137,12 +137,12 @@ export const HackathonDemoScriptModal: React.FC<HackathonDemoScriptModalProps> =
         </div>
 
         <div className="flex justify-between items-center pt-4 border-t border-slate-100">
-          <span className="text-xs font-extrabold text-eco-950 font-serif italic">
+          <span className="text-xs font-extrabold text-sky-950 font-serif italic">
             EVERY DROP IS A DECISION.
           </span>
           <button
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl bg-eco-900 hover:bg-eco-800 text-white font-bold text-xs shadow-xs transition-all active:scale-98"
+            className="px-5 py-2.5 rounded-xl bg-sky-900 hover:bg-sky-850 text-white font-bold text-xs shadow-xs transition-all active:scale-98"
           >
             Close Guide
           </button>

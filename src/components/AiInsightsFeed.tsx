@@ -18,15 +18,15 @@ export const AiInsightsFeed: React.FC<AiInsightsFeedProps> = ({ insights, langua
         return <AlertCircle className="w-3.5 h-3.5 text-amber-500" />;
       case 'info':
       default:
-        return <Info className="w-3.5 h-3.5 text-aqua-500" />;
+        return <Info className="w-3.5 h-3.5 text-sky-500" />;
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs">
-      <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-2xs">
+      <div className="flex items-center justify-between mb-4 pb-2 border-b border-sky-100">
         <div className="flex items-center space-x-2">
-          <Radio className="w-4 h-4 text-emerald-600 animate-pulse" />
+          <Radio className="w-4 h-4 text-cyan-500 animate-pulse" />
           <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
             {language === 'ta' ? 'நிகழ்நேர AI நுண்ணறிவு ஓடை' : 'LIVE AI INSIGHTS FEED'}
           </h3>
@@ -38,7 +38,7 @@ export const AiInsightsFeed: React.FC<AiInsightsFeedProps> = ({ insights, langua
         {insights.map((event) => (
           <div
             key={event.id}
-            className="flex items-start space-x-3 p-2.5 rounded-xl bg-slate-50/70 border border-slate-100 text-xs"
+            className="flex items-start space-x-3 p-2.5 rounded-xl bg-sky-50/40 border border-sky-100/70 text-xs"
           >
             <div className="mt-0.5 shrink-0">{getIcon(event.type)}</div>
             <div className="flex-1 min-w-0">

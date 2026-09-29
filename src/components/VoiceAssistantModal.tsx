@@ -122,7 +122,7 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
             className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto transition-all shadow-md active:scale-95 ${
               isListening
                 ? 'bg-rose-600 text-white animate-pulse ring-8 ring-rose-100'
-                : 'bg-gradient-to-tr from-eco-900 via-eco-800 to-aqua-700 text-white hover:scale-105'
+                : 'bg-gradient-to-tr from-sky-950 via-sky-850 to-cyan-600 text-white hover:scale-105'
             }`}
           >
             {isListening ? (
@@ -182,10 +182,10 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
             <button
               key={idx}
               onClick={() => handleQuery(q)}
-              className="w-full text-left p-3 rounded-xl bg-slate-50 hover:bg-eco-50 hover:border-eco-300 border border-slate-200/80 text-xs font-semibold text-slate-700 flex items-center justify-between transition-colors group"
+              className="w-full text-left p-3 rounded-xl bg-slate-50 hover:bg-sky-50 hover:border-sky-300 border border-slate-200/80 text-xs font-semibold text-slate-700 flex items-center justify-between transition-colors group"
             >
               <span className={`truncate ${language === 'ta' ? 'font-tamil' : ''}`}>{q}</span>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-eco-800 shrink-0 ml-1" />
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-sky-800 shrink-0 ml-1" />
             </button>
           ))}
         </div>

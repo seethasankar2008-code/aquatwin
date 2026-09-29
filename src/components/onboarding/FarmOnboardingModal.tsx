@@ -98,7 +98,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
         {/* Modal Top Header with Stepper */}
         <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/70 shrink-0">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-xl bg-eco-900 text-aqua-400 flex items-center justify-center shadow-xs">
+            <div className="w-9 h-9 rounded-xl bg-sky-950 text-cyan-400 border border-sky-800 flex items-center justify-center shadow-xs">
               <Droplets className="w-5 h-5" />
             </div>
             <div>
@@ -106,7 +106,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
                 <span className="font-extrabold text-sm tracking-tight text-slate-900 uppercase">
                   Farm Setup & Twin Creation
                 </span>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-aqua-100 text-aqua-900 border border-aqua-200">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-100 text-cyan-900 border border-cyan-200">
                   Onboarding
                 </span>
               </div>
@@ -132,7 +132,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
               type="button"
               onClick={() => setStep(1)}
               className={`flex items-center space-x-2 text-left p-1.5 rounded-xl transition-all ${
-                step === 1 ? 'bg-eco-50 border border-eco-200' : 'opacity-70 hover:opacity-100'
+                step === 1 ? 'bg-sky-50 border border-sky-200' : 'opacity-70 hover:opacity-100'
               }`}
             >
               <div
@@ -140,7 +140,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
                   step > 1
                     ? 'bg-emerald-600 text-white'
                     : step === 1
-                    ? 'bg-eco-900 text-white'
+                    ? 'bg-sky-900 text-white'
                     : 'bg-slate-200 text-slate-600'
                 }`}
               >
@@ -157,7 +157,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
               type="button"
               onClick={() => setStep(2)}
               className={`flex items-center space-x-2 text-left p-1.5 rounded-xl transition-all ${
-                step === 2 ? 'bg-eco-50 border border-eco-200' : 'opacity-70 hover:opacity-100'
+                step === 2 ? 'bg-sky-50 border border-sky-200' : 'opacity-70 hover:opacity-100'
               }`}
             >
               <div
@@ -165,7 +165,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
                   step > 2
                     ? 'bg-emerald-600 text-white'
                     : step === 2
-                    ? 'bg-eco-900 text-white'
+                    ? 'bg-sky-900 text-white'
                     : 'bg-slate-200 text-slate-600'
                 }`}
               >
@@ -182,12 +182,12 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
               type="button"
               onClick={() => fields.length > 0 && setStep(3)}
               className={`flex items-center space-x-2 text-left p-1.5 rounded-xl transition-all ${
-                step === 3 ? 'bg-eco-50 border border-eco-200' : 'opacity-70 hover:opacity-100'
+                step === 3 ? 'bg-sky-50 border border-sky-200' : 'opacity-70 hover:opacity-100'
               }`}
             >
               <div
                 className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-extrabold ${
-                  step === 3 ? 'bg-eco-900 text-white' : 'bg-slate-200 text-slate-600'
+                  step === 3 ? 'bg-sky-900 text-white' : 'bg-slate-200 text-slate-600'
                 }`}
               >
                 3
@@ -234,12 +234,12 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
           {step === 4 && (
             <div className="py-16 flex flex-col items-center justify-center text-center space-y-6">
               <div className="relative">
-                <div className="w-20 h-20 rounded-3xl bg-eco-900 flex items-center justify-center text-aqua-400 shadow-xl animate-pulse">
+                <div className="w-20 h-20 rounded-3xl bg-sky-950 flex items-center justify-center text-cyan-400 border border-sky-800 shadow-xl animate-pulse">
                   <Sparkles className="w-10 h-10" />
                 </div>
                 <span className="absolute -top-1 -right-1 flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aqua-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-aqua-500" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-cyan-500" />
                 </span>
               </div>
 
@@ -253,7 +253,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
               </div>
 
               <div className="w-64 bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                <div className="bg-gradient-to-r from-aqua-500 to-eco-900 h-2 rounded-full animate-[progress_1.2s_ease-in-out_infinite]" style={{ width: '85%' }} />
+                <div className="bg-gradient-to-r from-cyan-500 to-sky-700 h-2 rounded-full animate-[progress_1.2s_ease-in-out_infinite]" style={{ width: '85%' }} />
               </div>
             </div>
           )}

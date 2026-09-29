@@ -46,11 +46,11 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
   };
 
   return (
-    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-100">
+    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-2xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-sky-100">
         <div>
           <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4 text-aqua-600" />
+            <Clock className="w-4 h-4 text-sky-600" />
             <h3 className="text-base font-bold text-slate-900">{t.farmFuture}</h3>
           </div>
           <p className="text-xs text-slate-500">{t.stressTrajectory}</p>
@@ -88,7 +88,7 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
           return (
             <div
               key={field.id}
-              className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-slate-50/70 border border-slate-200/70 hover:bg-slate-50 transition-colors gap-3"
+              className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-sky-50/40 border border-sky-100/80 hover:bg-sky-50/70 transition-colors gap-3"
             >
               {/* Field Identity */}
               <div className="w-full sm:w-48 shrink-0">

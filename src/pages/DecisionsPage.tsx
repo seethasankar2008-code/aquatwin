@@ -65,7 +65,7 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
       {/* Header */}
       <div className="pb-4 border-b border-slate-200">
         <div className="flex items-center space-x-2.5">
-          <span className="p-2 rounded-xl bg-eco-100 text-eco-800 border border-eco-200 shadow-2xs">
+          <span className="p-2 rounded-xl bg-sky-100 text-sky-800 border border-sky-200 shadow-2xs">
             <Award className="w-5 h-5" />
           </span>
           <div>
@@ -80,7 +80,7 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
       </div>
 
       {/* Priority & Allocation Ranking Table */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-sky-100 shadow-xs">
         <div className="flex items-center justify-between mb-4 pb-3.5 border-b border-slate-100">
           <div>
             <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-900">
@@ -90,7 +90,7 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
               Ranked strictly by Priority Score and Marginal Water Benefit (Click any row to inspect explainability)
             </p>
           </div>
-          <span className="text-xs font-bold px-3 py-1 bg-eco-50 text-eco-900 rounded-full border border-eco-200 shadow-2xs">
+          <span className="text-xs font-bold px-3 py-1 bg-sky-50 text-sky-900 rounded-full border border-sky-200 shadow-2xs">
             Sorted by Agronomic Urgency
           </span>
         </div>
@@ -156,7 +156,7 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
                       </span>
                     </td>
                     <td className="py-3.5 px-3.5 text-center">
-                      <span className="font-extrabold text-eco-700 font-mono text-sm">
+                      <span className="font-extrabold text-sky-700 font-mono text-sm">
                         {field.marginalBenefit}/100
                       </span>
                     </td>
@@ -173,7 +173,7 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
                           setActiveExplainId(field.id);
                           onSelectField?.(field.id);
                         }}
-                        className="text-aqua-800 hover:text-aqua-950 font-bold text-[11px] underline underline-offset-2"
+                        className="text-sky-700 hover:text-sky-900 font-bold text-[11px] underline underline-offset-2"
                       >
                         Explain Why
                       </button>
@@ -272,9 +272,9 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
       )}
 
       {/* Adaptation Timeline (Section 32 in prompt) */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-xs">
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-sky-100 shadow-xs">
         <div className="flex items-center space-x-2.5 mb-5 pb-3.5 border-b border-slate-100">
-          <div className="p-1.5 rounded-lg bg-eco-100 text-eco-800">
+          <div className="p-1.5 rounded-lg bg-sky-100 text-sky-800">
             <History className="w-4 h-4" />
           </div>
           <h3 className={`text-sm font-extrabold uppercase tracking-wider text-slate-900 ${language === 'ta' ? 'font-tamil' : ''}`}>
@@ -285,9 +285,9 @@ export const DecisionsPage: React.FC<DecisionsPageProps> = ({
         <div className="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
           {timelineSteps.map((step, i) => (
             <div key={i} className="relative text-xs">
-              <span className="absolute -left-6 top-1 w-3 h-3 rounded-full bg-eco-700 ring-4 ring-eco-100" />
+              <span className="absolute -left-6 top-1 w-3 h-3 rounded-full bg-sky-600 ring-4 ring-sky-100" />
               <div className="flex items-baseline space-x-2 mb-1">
-                <span className="font-mono font-extrabold text-eco-900">{step.time}</span>
+                <span className="font-mono font-extrabold text-sky-900">{step.time}</span>
                 <span className="font-bold text-slate-900 text-xs sm:text-sm">{step.title}</span>
               </div>
               <p className="text-slate-600 leading-relaxed font-normal">{step.detail}</p>

@@ -50,7 +50,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
             placeholder="e.g. Green Valley Farm"
             value={profile.farmName}
             onChange={(e) => onChange({ farmName: e.target.value })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
           />
         </div>
 
@@ -67,7 +67,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
               placeholder="e.g. Thanjavur, Tamil Nadu"
               value={profile.location}
               onChange={(e) => onChange({ location: e.target.value })}
-              className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+              className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
             />
           </div>
         </div>
@@ -84,7 +84,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
             required
             value={profile.totalArea || ''}
             onChange={(e) => onChange({ totalArea: Number(e.target.value) })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
           />
         </div>
 
@@ -95,7 +95,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
           <select
             value={profile.areaUnit}
             onChange={(e) => onChange({ areaUnit: e.target.value as 'Acres' | 'Hectares' })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
           >
             <option value="Acres">Acres</option>
             <option value="Hectares">Hectares</option>
@@ -110,7 +110,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
           <select
             value={profile.waterSource}
             onChange={(e) => onChange({ waterSource: e.target.value as any })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
           >
             <option value="Farm Pond">Farm Pond</option>
             <option value="Borewell">Borewell</option>
@@ -134,12 +134,12 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
               required
               value={profile.availableWater || ''}
               onChange={(e) => onChange({ availableWater: Number(e.target.value) })}
-              className="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+              className="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
             />
             <select
               value={profile.waterUnit}
               onChange={(e) => onChange({ waterUnit: e.target.value as 'Litres' | 'Kilolitres' })}
-              className="w-28 px-2 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+              className="w-28 px-2 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
             >
               <option value="Litres">Litres (L)</option>
               <option value="Kilolitres">Kilolitres (kL)</option>
@@ -148,8 +148,8 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
         </div>
       </div>
 
-      <div className="p-3.5 rounded-2xl bg-eco-50/80 border border-eco-200/80 text-xs text-eco-950 flex items-start space-x-2.5">
-        <Droplets className="w-4 h-4 text-eco-700 shrink-0 mt-0.5" />
+      <div className="p-3.5 rounded-2xl bg-sky-50 border border-sky-200 text-xs text-sky-950 flex items-start space-x-2.5">
+        <Droplets className="w-4 h-4 text-sky-700 shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           <strong>Note:</strong> You do not need to enter temperature, rainfall probability, or future stress. AquaTwin's autonomous intelligence calculates those automatically.
         </p>
@@ -158,7 +158,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
       <div className="flex justify-end pt-2">
         <button
           type="submit"
-          className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-eco-900 hover:bg-eco-800 text-white font-extrabold text-xs shadow-md transition-all active:scale-98"
+          className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-sky-900 hover:bg-sky-850 text-white font-extrabold text-xs shadow-md transition-all active:scale-98"
         >
           <span>Continue to Add Fields</span>
           <ArrowRight className="w-4 h-4" />

@@ -132,10 +132,10 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
         {fields.map((field, idx) => (
           <div
             key={field.id}
-            className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:border-eco-300 transition-all gap-3"
+            className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:border-sky-300 transition-all gap-3"
           >
             <div className="flex items-center space-x-3">
-              <div className="p-2.5 rounded-xl bg-eco-50 text-eco-800 border border-eco-100 shrink-0">
+              <div className="p-2.5 rounded-xl bg-sky-50 text-sky-800 border border-sky-100 shrink-0">
                 <Sprout className="w-4 h-4" />
               </div>
               <div>
@@ -183,9 +183,9 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
 
       {/* Add / Edit Form Card */}
       {isFormOpen ? (
-        <form onSubmit={handleAddField} className="bg-white rounded-3xl p-5 sm:p-6 border border-eco-300 shadow-md space-y-4">
+        <form onSubmit={handleAddField} className="bg-white rounded-3xl p-5 sm:p-6 border border-sky-300 shadow-md space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-            <span className="font-extrabold text-xs uppercase tracking-wider text-eco-900">
+            <span className="font-extrabold text-xs uppercase tracking-wider text-sky-950">
               {editingId ? 'Edit Field Details' : 'Configure New Field'}
             </span>
             {fields.length > 0 && (
@@ -210,7 +210,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
                 required
                 value={draftName}
                 onChange={(e) => setDraftName(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
               />
             </div>
 
@@ -222,7 +222,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
               <select
                 value={draftCrop}
                 onChange={(e) => setDraftCrop(e.target.value as CropType)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
               >
                 <option value="Rice">Rice (Paddy)</option>
                 <option value="Tomato">Tomato</option>
@@ -245,7 +245,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
                 required
                 value={draftArea}
                 onChange={(e) => setDraftArea(Number(e.target.value))}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
               />
             </div>
 
@@ -257,7 +257,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
               <select
                 value={draftSoil}
                 onChange={(e) => setDraftSoil(e.target.value as SoilType)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
               >
                 <option value="Clay Loam">Clay Loam</option>
                 <option value="Sandy Loam">Sandy Loam</option>
@@ -274,7 +274,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
               <select
                 value={draftStage}
                 onChange={(e) => setDraftStage(e.target.value as GrowthStage)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
               >
                 <option value="Flowering">Flowering (High Sensitivity)</option>
                 <option value="Vegetative">Vegetative</option>
@@ -300,7 +300,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
                 placeholder="e.g. 24 (Leave blank if unknown)"
                 value={draftMoisture}
                 onChange={(e) => setDraftMoisture(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-aqua-500 bg-slate-50/50"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
               />
             </div>
           </div>
@@ -318,7 +318,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
           <div className="flex justify-end space-x-2 pt-2 border-t border-slate-100">
             <button
               type="submit"
-              className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-eco-900 hover:bg-eco-800 text-white font-extrabold text-xs shadow-xs transition-all active:scale-98"
+              className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-sky-900 hover:bg-sky-850 text-white font-extrabold text-xs shadow-xs transition-all active:scale-98"
             >
               <Check className="w-4 h-4" />
               <span>{editingId ? 'Save Changes' : 'Add Field to Roster'}</span>
@@ -334,9 +334,9 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
             setDraftAnalysis(undefined);
             setIsFormOpen(true);
           }}
-          className="w-full py-3.5 px-4 rounded-2xl border-2 border-dashed border-slate-300 hover:border-aqua-500 hover:bg-aqua-50/20 text-slate-600 hover:text-aqua-900 font-extrabold text-xs flex items-center justify-center space-x-2 transition-all shadow-2xs"
+          className="w-full py-3.5 px-4 rounded-2xl border-2 border-dashed border-slate-300 hover:border-cyan-500 hover:bg-cyan-50/20 text-slate-600 hover:text-cyan-900 font-extrabold text-xs flex items-center justify-center space-x-2 transition-all shadow-2xs"
         >
-          <Plus className="w-4 h-4 text-aqua-600" />
+          <Plus className="w-4 h-4 text-cyan-600" />
           <span>+ ADD ANOTHER FIELD</span>
         </button>
       )}
@@ -354,7 +354,7 @@ export const AddFieldsStep: React.FC<AddFieldsStepProps> = ({
         <button
           type="button"
           onClick={handleContinue}
-          className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-eco-900 hover:bg-eco-800 text-white font-extrabold text-xs shadow-md transition-all active:scale-98"
+          className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-sky-900 hover:bg-sky-850 text-white font-extrabold text-xs shadow-md transition-all active:scale-98"
         >
           <span>Review Farm ({fields.length} {fields.length === 1 ? 'Field' : 'Fields'})</span>
           <ArrowRight className="w-4 h-4" />

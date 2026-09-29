@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-sky-100 shadow-2xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo & Wordmark */}
@@ -56,12 +56,12 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center space-x-3 cursor-pointer group" 
             onClick={() => onTabChange('command-center')}
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-eco-900 to-eco-800 flex items-center justify-center text-white shadow-xs border border-eco-700/40">
-              <Droplets className="w-5 h-5 text-aqua-400" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-950 via-sky-900 to-cyan-800 flex items-center justify-center text-white shadow-xs border border-sky-700/50">
+              <Droplets className="w-5 h-5 text-cyan-300" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-xl tracking-tight text-slate-900 group-hover:text-eco-900 transition-colors">
+                <span className="font-extrabold text-xl tracking-tight text-slate-900 group-hover:text-sky-700 transition-colors">
                   AQUATWIN
                 </span>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {farmState.farmProfile ? farmState.farmProfile.farmName : t.farmLive}
                 </span>
               </div>
-              <p className="text-[10px] font-bold tracking-wider text-eco-700 uppercase">
+              <p className="text-[10px] font-bold tracking-wider text-sky-700 uppercase">
                 {farmState.farmProfile
                   ? `${farmState.farmProfile.location} • ${farmState.farmProfile.totalArea} ${farmState.farmProfile.areaUnit}`
                   : t.tagline}
@@ -87,14 +87,14 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => onTabChange(item.id)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all relative flex items-center space-x-1.5 ${
                     active
-                      ? 'bg-eco-900 text-white shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
-                  } ${item.isDemo && !active ? 'text-aqua-950 font-bold' : ''}`}
+                      ? 'bg-gradient-to-r from-sky-900 to-sky-800 text-white shadow-2xs border border-sky-700/50'
+                      : 'text-slate-600 hover:text-sky-950 hover:bg-sky-50/80'
+                  } ${item.isDemo && !active ? 'text-sky-950 font-bold' : ''}`}
                 >
                   <span className={language === 'ta' ? 'font-tamil' : ''}>{item.label}</span>
                   {item.isDemo && (
                     <span className={`px-1.5 py-0.2 rounded text-[9px] font-extrabold uppercase tracking-wider ${
-                      active ? 'bg-aqua-400 text-eco-950' : 'bg-aqua-100 text-aqua-900 border border-aqua-200'
+                      active ? 'bg-cyan-300 text-sky-950' : 'bg-cyan-100 text-cyan-900 border border-cyan-200'
                     }`}>
                       Demo
                     </span>
@@ -110,25 +110,25 @@ export const Header: React.FC<HeaderProps> = ({
             {onOpenFarmSetup && (
               <button
                 onClick={onOpenFarmSetup}
-                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-eco-900 hover:bg-eco-800 text-white text-xs font-extrabold shadow-2xs transition-all active:scale-95 border border-eco-800/80"
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-sky-900 to-cyan-800 hover:from-sky-800 hover:to-cyan-700 text-white text-xs font-extrabold shadow-2xs transition-all active:scale-95 border border-sky-600/40"
                 title="Setup Farm & Fields"
               >
-                <Sprout className="w-3.5 h-3.5 text-aqua-400" />
+                <Sprout className="w-3.5 h-3.5 text-cyan-300" />
                 <span className="hidden sm:inline">Farm Setup</span>
                 <span className="sm:hidden">+ Farm</span>
               </button>
             )}
 
             {/* Water Bank Mini-Pill */}
-            <div className="hidden lg:flex items-center bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl text-xs shadow-2xs">
-              <ShieldCheck className="w-3.5 h-3.5 text-aqua-700 mr-1.5" />
+            <div className="hidden lg:flex items-center bg-sky-50/90 border border-sky-200/90 px-3 py-1.5 rounded-xl text-xs shadow-2xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-sky-700 mr-1.5" />
               <span className="text-slate-500 mr-1.5 font-medium">{t.waterAvailable}:</span>
-              <span className="font-extrabold text-slate-900 font-mono">
+              <span className="font-extrabold text-sky-950 font-mono">
                 {farmState.waterBudget.availableWater.toLocaleString()} L
               </span>
               <span className="mx-2 text-slate-300">|</span>
               <span className="text-slate-500 mr-1 text-[11px]">Res:</span>
-              <span className="text-emerald-700 font-bold font-mono text-[11px]">
+              <span className="text-cyan-800 font-bold font-mono text-[11px]">
                 {farmState.waterBudget.reserveWater.toLocaleString()} L
               </span>
             </div>
@@ -140,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({
               className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-2xs ${
                 isSpeaking
                   ? 'bg-rose-600 text-white ring-2 ring-rose-200'
-                  : 'bg-aqua-50 hover:bg-aqua-100 text-aqua-950 border border-aqua-200/90'
+                  : 'bg-sky-50 hover:bg-sky-100 text-sky-950 border border-sky-200/90'
               }`}
             >
               {isSpeaking ? (
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </>
               ) : (
                 <>
-                  <Volume2 className="w-3.5 h-3.5 text-aqua-700" />
+                  <Volume2 className="w-3.5 h-3.5 text-sky-700" />
                   <span className="hidden sm:inline font-bold">{t.hearDecision}</span>
                 </>
               )}
@@ -183,13 +183,13 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Mobile Navigation Strip */}
-        <div className="flex md:hidden overflow-x-auto py-2.5 space-x-1.5 border-t border-slate-100 no-scrollbar">
+        <div className="flex md:hidden overflow-x-auto py-2.5 space-x-1.5 border-t border-sky-100 no-scrollbar">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => onTabChange(item.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
-                currentTab === item.id ? 'bg-eco-900 text-white' : 'text-slate-600 bg-slate-50 border border-slate-200/60'
+                currentTab === item.id ? 'bg-sky-900 text-white' : 'text-slate-600 bg-sky-50/70 border border-sky-100'
               } ${language === 'ta' ? 'font-tamil' : ''}`}
             >
               {item.label}
