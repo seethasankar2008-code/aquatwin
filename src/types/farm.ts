@@ -21,6 +21,22 @@ export interface FutureStressTrajectory {
   plus24h: StressLevel;
 }
 
+export type CropAppearance = 'Healthy' | 'Moderate Stress' | 'Possible Stress' | 'Uncertain';
+export type SurfaceCondition = 'Dry-looking' | 'Moist-looking' | 'Standing Water' | 'Uncertain';
+export type VisibleCropStress = 'Low' | 'Moderate' | 'High' | 'Uncertain';
+export type VisualConfidence = 'Low' | 'Medium' | 'High';
+
+export interface FieldVisualAnalysis {
+  photoUrl?: string;
+  timestamp: string;
+  cropAppearance: CropAppearance;
+  surfaceCondition: SurfaceCondition;
+  visibleStress: VisibleCropStress;
+  confidence: VisualConfidence;
+  observation: string;
+  disclaimer: string;
+}
+
 export interface FieldState {
   id: string;
   name: string;
@@ -42,6 +58,7 @@ export interface FieldState {
   previousAllocation: number; // Litres allocated in prior step
   confidence: number; // 0-100% decision confidence
   reasons: string[]; // Rationale bullet points
+  visualAnalysis?: FieldVisualAnalysis; // Optional field photo visual observation
 }
 
 export interface WeatherState {
@@ -84,6 +101,16 @@ export interface WhatChangedDelta {
   summaryReason: string;
 }
 
+export interface FarmProfile {
+  farmName: string;
+  location: string;
+  totalArea: number;
+  areaUnit: 'Acres' | 'Hectares';
+  waterSource: 'Borewell' | 'Canal' | 'Farm Pond' | 'Reservoir' | 'Rainwater' | 'Other';
+  availableWater: number;
+  waterUnit: 'Litres' | 'Kilolitres';
+}
+
 export interface FarmState {
   weather: WeatherState;
   waterBudget: WaterBudget;
@@ -92,6 +119,7 @@ export interface FarmState {
   simulationMode: boolean; // Always true for hackathon integrity
   lastAdaptedTime: string;
   whatChanged: WhatChangedDelta;
+  farmProfile?: FarmProfile; // Optional user configured farm profile
 }
 
 export interface ComparisonStrategyMetrics {

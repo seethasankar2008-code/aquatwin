@@ -3,7 +3,8 @@ import {
   FarmState, 
   Language, 
   ScenarioPreset, 
-  InsightEvent 
+  InsightEvent,
+  FarmProfile 
 } from './types/farm';
 import { 
   computeFarmState, 
@@ -20,6 +21,8 @@ import { DecisionsPage } from './pages/DecisionsPage';
 import { ResiliencePage } from './pages/ResiliencePage';
 import { VoiceAssistantModal } from './components/VoiceAssistantModal';
 import { HackathonDemoScriptModal } from './components/HackathonDemoScriptModal';
+import { FarmOnboardingModal } from './components/onboarding/FarmOnboardingModal';
+import { UserConfiguredField } from './components/onboarding/AddFieldsStep';
 import { Mic, Award, Info } from 'lucide-react';
 import { translations } from './i18n/translations';
 
@@ -37,8 +40,35 @@ export const App: React.FC = () => {
   // Modals
   const [isVoiceModalOpen, setIsVoiceModalOpen] = useState<boolean>(false);
   const [isJudgeGuideOpen, setIsJudgeGuideOpen] = useState<boolean>(false);
+  const [isFarmSetupOpen, setIsFarmSetupOpen] = useState<boolean>(false);
 
   const t = translations[language];
+
+  // Custom Farm Creation Handler
+  const handleCreateFarmTwin = (profile: FarmProfile, configuredFields: UserConfiguredField[]) => {
+    setPreviousState({ ...farmState });
+    const nextState = computeFarmState(
+      INITIAL_WEATHER,
+      profile.availableWater,
+      undefined,
+      'BASELINE',
+      undefined, // fresh calculation for configured farm twin
+      configuredFields,
+      profile
+    );
+    setFarmState(nextState);
+    setCurrentTab('command-center');
+    setSelectedFieldId(null);
+
+    const newInsight: InsightEvent = {
+      id: `evt-${Date.now()}`,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      title: `Digital Farm Twin Created: ${profile.farmName}`,
+      detail: `Calibrated ${configuredFields.length} field plots with ${profile.availableWater.toLocaleString()} ${profile.waterUnit === 'Kilolitres' ? 'kL' : 'L'} water pool under uncertainty.`,
+      type: 'success',
+    };
+    setInsights((prev) => [newInsight, ...prev.slice(0, 5)]);
+  };
 
   // Preset scenario trigger
   const handleApplyPreset = (preset: ScenarioPreset) => {
@@ -99,6 +129,7 @@ export const App: React.FC = () => {
         farmState={farmState}
         language={language}
         onLanguageChange={setLanguage}
+        onOpenFarmSetup={() => setIsFarmSetupOpen(true)}
       />
 
       {/* Main Screen Body */}
@@ -110,6 +141,7 @@ export const App: React.FC = () => {
             insights={insights}
             onSelectField={handleSelectField}
             onNavigateToScenarioLab={() => setCurrentTab('scenario-lab')}
+            onOpenFarmSetup={() => setIsFarmSetupOpen(true)}
           />
         )}
 
@@ -183,6 +215,14 @@ export const App: React.FC = () => {
         onClose={() => setIsJudgeGuideOpen(false)}
         language={language}
         onJumpToTab={setCurrentTab}
+      />
+
+      <FarmOnboardingModal
+        isOpen={isFarmSetupOpen}
+        onClose={() => setIsFarmSetupOpen(false)}
+        onCreateFarmTwin={handleCreateFarmTwin}
+        language={language}
+        initialProfile={farmState.farmProfile}
       />
 
       {/* Footer */}

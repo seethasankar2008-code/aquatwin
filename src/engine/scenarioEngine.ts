@@ -9,6 +9,11 @@ import {
   WaterIntegrityTelemetry,
   RainHarvestTelemetry,
   GroundwaterSafetyTelemetry,
+  FarmProfile,
+  FieldVisualAnalysis,
+  CropType,
+  SoilType,
+  GrowthStage,
 } from '../types/farm';
 import { 
   CROP_AGRONOMIC_PROFILES, 
@@ -105,7 +110,19 @@ export function computeFarmState(
   availableWater: number,
   fieldMoistures?: Record<string, number>,
   activeScenario: ScenarioPreset = 'BASELINE',
-  previousState?: FarmState
+  previousState?: FarmState,
+  customFieldsConfig?: Array<{
+    id: string;
+    name: string;
+    crop: CropType;
+    area: number;
+    soilType: SoilType;
+    soilMoisture?: number;
+    targetMoisture?: number;
+    growthStage: GrowthStage;
+    visualAnalysis?: FieldVisualAnalysis;
+  }>,
+  farmProfile?: FarmProfile
 ): FarmState {
   const et0 = calculateET0(weather.temperature, weather.humidity);
   const updatedWeather: WeatherState = {
@@ -117,10 +134,54 @@ export function computeFarmState(
   const uncertainty = evaluateUncertainty(updatedWeather, availableWater);
   updatedWeather.uncertaintyLevel = uncertainty.uncertaintyLevel;
 
+  // Determine base fields source (user custom fields, previous state fields, or default initial config)
+  const fieldsSource = customFieldsConfig
+    ? customFieldsConfig.map((f) => {
+        const cropProfile = CROP_AGRONOMIC_PROFILES[f.crop];
+        const defaultMoisture = f.soilMoisture !== undefined ? f.soilMoisture : Math.round(cropProfile.optimalMoisture * 0.65);
+        return {
+          id: f.id,
+          name: f.name,
+          crop: f.crop,
+          area: f.area,
+          soilType: f.soilType,
+          soilMoisture: defaultMoisture,
+          targetMoisture: f.targetMoisture ?? cropProfile.optimalMoisture,
+          growthStage: f.growthStage,
+          visualAnalysis: f.visualAnalysis,
+        };
+      })
+    : (previousState?.farmProfile && previousState.fields.length > 0)
+    ? previousState.fields.map((f) => ({
+        id: f.id,
+        name: f.name,
+        crop: f.crop,
+        area: f.area,
+        soilType: f.soilType,
+        soilMoisture: f.soilMoisture,
+        targetMoisture: f.targetMoisture,
+        growthStage: f.growthStage,
+        visualAnalysis: f.visualAnalysis,
+      }))
+    : INITIAL_FIELDS_CONFIG;
+
   // 2. Compute telemetry & demand per field
-  const tempFields: FieldState[] = INITIAL_FIELDS_CONFIG.map((cfg) => {
+  const tempFields: FieldState[] = fieldsSource.map((cfg) => {
     const profile = CROP_AGRONOMIC_PROFILES[cfg.crop];
-    const currentMoisture = fieldMoistures?.[cfg.id] ?? cfg.soilMoisture;
+    let currentMoisture = fieldMoistures?.[cfg.id];
+    if (currentMoisture === undefined) {
+      if (activeScenario === 'RAIN_SURGE') {
+        currentMoisture = Math.min(95, Math.round(cfg.soilMoisture * 1.25));
+      } else if (activeScenario === 'RAIN_FAILURE') {
+        currentMoisture = Math.max(10, Math.round(cfg.soilMoisture * 0.75));
+      } else if (activeScenario === 'HEATWAVE') {
+        currentMoisture = Math.max(10, Math.round(cfg.soilMoisture * 0.8));
+      } else if (activeScenario === 'DROUGHT') {
+        currentMoisture = Math.max(8, Math.round(cfg.soilMoisture * 0.65));
+      } else {
+        currentMoisture = cfg.soilMoisture;
+      }
+    }
 
     // Stress determination
     const currentStress = determineStressLevel(currentMoisture, profile.wiltingPoint, profile.optimalMoisture);
@@ -180,6 +241,7 @@ export function computeFarmState(
       previousAllocation,
       confidence: modelConfidence,
       reasons: mbResult.reasons,
+      visualAnalysis: (cfg as any).visualAnalysis,
     };
   });
 
@@ -222,6 +284,7 @@ export function computeFarmState(
     simulationMode: true,
     lastAdaptedTime: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     whatChanged,
+    farmProfile: farmProfile ?? previousState?.farmProfile,
   };
 }
 

@@ -8,7 +8,7 @@ import { FarmFutureTrajectory } from '../components/FarmFutureTrajectory';
 import { AiInsightsFeed } from '../components/AiInsightsFeed';
 import { WhatChangedCard } from '../components/WhatChangedCard';
 import { InsightEvent } from '../types/farm';
-import { Sparkles, SlidersHorizontal, ArrowRight } from 'lucide-react';
+import { Sparkles, SlidersHorizontal, ArrowRight, Sprout } from 'lucide-react';
 
 interface CommandCenterPageProps {
   farmState: FarmState;
@@ -16,6 +16,7 @@ interface CommandCenterPageProps {
   insights: InsightEvent[];
   onSelectField: (fieldId: string) => void;
   onNavigateToScenarioLab: () => void;
+  onOpenFarmSetup?: () => void;
 }
 
 export const CommandCenterPage: React.FC<CommandCenterPageProps> = ({
@@ -24,6 +25,7 @@ export const CommandCenterPage: React.FC<CommandCenterPageProps> = ({
   insights,
   onSelectField,
   onNavigateToScenarioLab,
+  onOpenFarmSetup,
 }) => {
   const t = translations[language];
 
@@ -52,6 +54,16 @@ export const CommandCenterPage: React.FC<CommandCenterPageProps> = ({
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            {onOpenFarmSetup && (
+              <button
+                onClick={onOpenFarmSetup}
+                className="flex items-center justify-center space-x-2 px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs sm:text-sm border border-white/20 shadow-md transition-all active:scale-98"
+                title="Configure custom farm and fields"
+              >
+                <Sprout className="w-4 h-4 text-aqua-300" />
+                <span>{farmState.farmProfile ? 'Reconfigure Farm' : '+ Setup My Farm'}</span>
+              </button>
+            )}
             <button
               onClick={onNavigateToScenarioLab}
               className="flex items-center justify-center space-x-2 px-5 py-3 rounded-2xl bg-aqua-500 hover:bg-aqua-400 text-eco-950 font-extrabold text-xs sm:text-sm shadow-md transition-all active:scale-98"

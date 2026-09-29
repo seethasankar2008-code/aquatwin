@@ -83,7 +83,7 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
           </p>
         </div>
         <span className="text-[11px] font-bold text-eco-800 bg-eco-50 px-3 py-1 rounded-full border border-eco-200 shadow-2xs">
-          6 Active Zones
+          {fields.length} Active Zones
         </span>
       </div>
 
@@ -125,8 +125,13 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                         </span>
                       )}
                     </h4>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-500 flex items-center space-x-1.5 flex-wrap">
                       <span className="font-semibold text-slate-700">{field.crop}</span> • <span className="italic">{field.growthStage}</span>
+                      {field.visualAnalysis && (
+                        <span className="inline-flex items-center space-x-0.5 px-1.5 py-0.2 rounded-md bg-aqua-100 text-aqua-900 text-[9px] font-extrabold border border-aqua-200">
+                          <span>📷 Visual</span>
+                        </span>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -301,6 +306,61 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
               </ul>
             </div>
           </div>
+
+          {/* Field Visual Observation Card (if present) */}
+          {selectedField.visualAnalysis && (
+            <div className="mt-5 p-4.5 rounded-2xl bg-slate-800/90 border border-aqua-500/40 shadow-inner">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-700/80 mb-3">
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm">📷</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-aqua-300">
+                    Field Visual Analysis (Qualitative Observation)
+                  </span>
+                </div>
+                <span className="text-[10px] text-slate-400 font-mono">
+                  Captured: {selectedField.visualAnalysis.timestamp}
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 items-start">
+                {selectedField.visualAnalysis.photoUrl && (
+                  <img
+                    src={selectedField.visualAnalysis.photoUrl}
+                    alt={selectedField.name}
+                    className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-xl border border-slate-600 shrink-0 shadow-md"
+                  />
+                )}
+                <div className="space-y-2 flex-1 text-xs">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
+                      <span className="text-[10px] text-slate-400 block">Canopy Appearance</span>
+                      <span className="font-extrabold text-emerald-400 mt-0.5 block">{selectedField.visualAnalysis.cropAppearance}</span>
+                    </div>
+                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
+                      <span className="text-[10px] text-slate-400 block">Surface Moisture</span>
+                      <span className="font-extrabold text-aqua-300 mt-0.5 block">{selectedField.visualAnalysis.surfaceCondition}</span>
+                    </div>
+                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
+                      <span className="text-[10px] text-slate-400 block">Visible Stress</span>
+                      <span className="font-extrabold text-amber-300 mt-0.5 block">{selectedField.visualAnalysis.visibleStress}</span>
+                    </div>
+                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
+                      <span className="text-[10px] text-slate-400 block">Visual Confidence</span>
+                      <span className="font-extrabold text-slate-200 mt-0.5 block">{selectedField.visualAnalysis.confidence}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-slate-300 leading-relaxed italic bg-slate-900/40 p-2.5 rounded-xl border border-slate-700/40">
+                    "{selectedField.visualAnalysis.observation}"
+                  </p>
+
+                  <p className="text-[10px] text-slate-400 font-medium">
+                    ⚠️ {selectedField.visualAnalysis.disclaimer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

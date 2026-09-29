@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Droplets, Volume2, Square, ShieldCheck } from 'lucide-react';
+import { Droplets, Volume2, Square, ShieldCheck, Sprout } from 'lucide-react';
 import { FarmState, Language } from '../types/farm';
 import { translations } from '../i18n/translations';
 import { speakText, stopSpeech, buildDecisionBriefText } from '../services/speechService';
@@ -10,6 +10,7 @@ interface HeaderProps {
   farmState: FarmState;
   language: Language;
   onLanguageChange: (lang: Language) => void;
+  onOpenFarmSetup?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -18,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   farmState,
   language,
   onLanguageChange,
+  onOpenFarmSetup,
 }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const t = translations[language];
@@ -64,11 +66,13 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5" />
-                  {t.farmLive}
+                  {farmState.farmProfile ? farmState.farmProfile.farmName : t.farmLive}
                 </span>
               </div>
               <p className="text-[10px] font-bold tracking-wider text-eco-700 uppercase">
-                {t.tagline}
+                {farmState.farmProfile
+                  ? `${farmState.farmProfile.location} • ${farmState.farmProfile.totalArea} ${farmState.farmProfile.areaUnit}`
+                  : t.tagline}
               </p>
             </div>
           </div>
@@ -100,8 +104,21 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* Quick Actions: Water Bank Pill, Voice Brief, Language Toggle */}
+          {/* Quick Actions: Farm Setup, Water Bank Pill, Voice Brief, Language Toggle */}
           <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Farm Setup Trigger */}
+            {onOpenFarmSetup && (
+              <button
+                onClick={onOpenFarmSetup}
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-eco-900 hover:bg-eco-800 text-white text-xs font-extrabold shadow-2xs transition-all active:scale-95 border border-eco-800/80"
+                title="Setup Farm & Fields"
+              >
+                <Sprout className="w-3.5 h-3.5 text-aqua-400" />
+                <span className="hidden sm:inline">Farm Setup</span>
+                <span className="sm:hidden">+ Farm</span>
+              </button>
+            )}
+
             {/* Water Bank Mini-Pill */}
             <div className="hidden lg:flex items-center bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl text-xs shadow-2xs">
               <ShieldCheck className="w-3.5 h-3.5 text-aqua-700 mr-1.5" />
