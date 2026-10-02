@@ -109,6 +109,7 @@ export interface FarmProfile {
   waterSource: 'Borewell' | 'Canal' | 'Farm Pond' | 'Reservoir' | 'Rainwater' | 'Other';
   availableWater: number;
   waterUnit: 'Litres' | 'Kilolitres';
+  irrigationMethod?: 'Drip' | 'Sprinkler' | 'Flood' | 'Basin' | 'Other';
 }
 
 export interface FarmState {

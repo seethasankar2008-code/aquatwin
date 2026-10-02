@@ -54,50 +54,46 @@ export const FarmBrainCard: React.FC<FarmBrainCardProps> = ({
   if (!topField) return null;
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-950 via-sky-900 to-slate-900 text-white shadow-xl border border-sky-700/60 p-6 sm:p-8">
-      {/* Subtle ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
-
-      {/* Header bar of Farm Brain */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-sky-800/80">
+    <div className="relative overflow-hidden rounded-2xl bg-white/92 backdrop-blur-md border-2 border-water-500/40 shadow-md shadow-sky-900/5 p-6 sm:p-7 text-slate-900">
+      {/* Header bar of Central Allocation Dispatch */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-sky-100">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-400 to-sky-500 flex items-center justify-center text-sky-950 shadow-md">
-            <Brain className="w-5 h-5 text-sky-950" />
+          <div className="w-9 h-9 rounded-lg bg-water-600 text-white flex items-center justify-center shadow-xs">
+            <Droplets className="w-5 h-5 text-white" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className={`font-extrabold tracking-wider text-xs uppercase text-cyan-300 ${language === 'ta' ? 'font-tamil' : ''}`}>
+              <span className={`font-black tracking-wider text-xs uppercase text-water-700 font-display ${language === 'ta' ? 'font-tamil' : ''}`}>
                 {t.farmBrainTitle}
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-sky-100 text-water-900 border border-sky-300/80">
                 {t.aiDecision}
               </span>
             </div>
-            <p className="text-xs text-sky-200/90 font-medium">
-              Autonomous water allocation intelligence • Root-zone decision model
+            <p className="text-xs text-slate-600 font-medium">
+              Autonomous Hydraulic Dispatch • Root-zone dynamic model
             </p>
           </div>
         </div>
 
         {/* Confidence Badge & Audio Play */}
-        <div className="flex items-center space-x-2.5">
-          <div className="flex items-center bg-sky-900/90 border border-sky-700/70 px-3.5 py-1.5 rounded-xl shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400 mr-2" />
-            <span className={`text-[11px] text-sky-200 mr-1.5 ${language === 'ta' ? 'font-tamil' : ''}`}>
+        <div className="flex items-center space-x-2">
+          <div className="flex items-center bg-sky-50 border border-sky-200 px-3 py-1.5 rounded-lg shadow-xs">
+            <Clock className="w-3.5 h-3.5 text-water-600 mr-1.5" />
+            <span className={`text-xs text-slate-700 font-medium mr-1.5 ${language === 'ta' ? 'font-tamil' : ''}`}>
               {t.decisionConfidence}:
             </span>
-            <span className="text-xs font-extrabold text-cyan-300 font-mono">
+            <span className="text-xs font-black text-sky-950 font-mono tabular-nums">
               {topField.confidence}%
             </span>
           </div>
 
           <button
             onClick={handleVoicePlay}
-            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all shadow-xs ${
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-xs ${
               isPlaying
                 ? 'bg-rose-600 text-white animate-pulse'
-                : 'bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 border border-cyan-400/50'
+                : 'bg-white hover:bg-sky-50 text-slate-800 border border-sky-300'
             }`}
           >
             {isPlaying ? (
@@ -107,7 +103,7 @@ export const FarmBrainCard: React.FC<FarmBrainCardProps> = ({
               </>
             ) : (
               <>
-                <Volume2 className="w-3.5 h-3.5 text-cyan-300" />
+                <Volume2 className="w-3.5 h-3.5 text-water-600" />
                 <span className={language === 'ta' ? 'font-tamil' : ''}>{t.hearDecision}</span>
               </>
             )}
@@ -116,76 +112,76 @@ export const FarmBrainCard: React.FC<FarmBrainCardProps> = ({
       </div>
 
       {/* Main Focus Body */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6 items-center">
-        {/* Left: Decision Summary (Visually Dominant) */}
-        <div className="lg:col-span-7 space-y-4">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/40">
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mt-5 items-center">
+        {/* Left: Decision Summary */}
+        <div className="lg:col-span-7 space-y-3.5">
+          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-md bg-amber-50 text-amber-950 text-xs font-bold border border-amber-300">
+            <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
             <span className={language === 'ta' ? 'font-tamil' : ''}>
               {t.prioritizeField}: {topField.name} ({topField.crop})
             </span>
-            <span className="text-amber-400/60">•</span>
-            <span className="font-mono">{topField.priorityScore}/100 Priority</span>
+            <span className="text-amber-400">•</span>
+            <span className="font-mono text-amber-900 font-extrabold">{topField.priorityScore}/100 Priority</span>
           </div>
 
           {/* Dominant Allocation Recommendation */}
           <div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-sky-950 font-display leading-snug">
               Allocate{' '}
-              <span className="text-cyan-300 font-mono underline decoration-cyan-400/50 decoration-2 underline-offset-6">
+              <span className="text-water-600 font-mono tabular-nums">
                 {topField.allocation.toLocaleString()} L
               </span>{' '}
               to preserve {topField.growthStage}
             </h3>
-            <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed max-w-2xl mt-2.5">
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-2xl mt-2 font-normal">
               AquaTwin’s marginal water benefit model determined this field yields 
-              <strong className="text-white font-semibold"> maximum stress mitigation per litre</strong>. 
-              Root moisture is depleted to <span className="font-bold text-rose-300 font-mono">{topField.soilMoisture}%</span> with 
+              <strong className="text-slate-900 font-bold"> maximum stress mitigation per litre</strong>. 
+              Root moisture is depleted to <span className="font-extrabold text-rose-600 font-mono tabular-nums">{topField.soilMoisture}%</span> with 
               critical stress predicted in +12 hours under current thermal evapotranspiration.
             </p>
           </div>
 
-          {/* Quick Action CTA buttons */}
-          <div className="flex flex-wrap gap-2.5 pt-2">
+          {/* Action Buttons: Clear Primary vs Secondary Hierarchy */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-2">
             <button
-              onClick={() => onExploreField?.(topField.id)}
-              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-sky-950 font-bold text-xs transition-all shadow-md active:scale-98"
+              onClick={onGoToScenarioLab}
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-water-600 hover:bg-water-500 text-white font-bold text-xs transition-all shadow-xs active:scale-98"
             >
-              <span>Inspect Telemetry & Why</span>
+              <span>ADAPT FARM (Scenario Lab)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <button
-              onClick={onGoToScenarioLab}
-              className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-xl bg-sky-900/90 hover:bg-sky-800 text-sky-100 font-semibold text-xs border border-sky-700/80 transition-all active:scale-98"
+              onClick={() => onExploreField?.(topField.id)}
+              className="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-lg bg-white/90 hover:bg-sky-50 text-slate-800 font-bold text-xs border border-sky-300 transition-all active:scale-98 shadow-xs"
             >
-              <span>Test Drought/Rain Scenarios</span>
+              <span>Inspect Telemetry & Dossier</span>
             </button>
           </div>
         </div>
 
-        {/* Right: Key Decision Factors (Explainable AI checklist) */}
-        <div className="lg:col-span-5 bg-sky-950/80 rounded-2xl p-5 border border-sky-700/70 shadow-inner">
-          <div className="flex items-center justify-between mb-3 pb-2.5 border-b border-sky-800/80">
-            <span className={`text-xs font-extrabold text-cyan-300 uppercase tracking-wider ${language === 'ta' ? 'font-tamil' : ''}`}>
+        {/* Right: Key Decision Factors */}
+        <div className="lg:col-span-5 bg-sky-50/75 rounded-xl p-4.5 border border-sky-200/90 shadow-xs">
+          <div className="flex items-center justify-between mb-3 pb-2 border-b border-sky-200/70">
+            <span className={`text-xs font-black text-sky-950 uppercase tracking-wider font-display ${language === 'ta' ? 'font-tamil' : ''}`}>
               {t.whyThisDecision}
             </span>
-            <span className="text-[11px] font-mono text-sky-300 font-medium">
-              Marginal Benefit: <strong className="text-cyan-400 font-bold">{topField.marginalBenefit}/100</strong>
+            <span className="text-xs font-mono text-slate-700">
+              Benefit: <strong className="text-water-700 font-black">{topField.marginalBenefit}/100</strong>
             </span>
           </div>
 
-          <ul className="space-y-2.5">
+          <ul className="space-y-2">
             {topField.reasons.slice(0, 4).map((reason, idx) => (
-              <li key={idx} className="flex items-start text-xs text-sky-100 leading-normal">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400 mr-2.5 mt-0.5 shrink-0" />
+              <li key={idx} className="flex items-start text-xs text-slate-800 font-medium leading-relaxed">
+                <CheckCircle2 className="w-3.5 h-3.5 text-water-600 mr-2 mt-0.5 shrink-0" />
                 <span>{reason}</span>
               </li>
             ))}
-            <li className="flex items-start text-xs text-sky-100 leading-normal pt-1 border-t border-sky-800/60">
-              <ShieldAlert className="w-4 h-4 text-cyan-400 mr-2.5 mt-0.5 shrink-0" />
+            <li className="flex items-start text-xs text-slate-800 font-medium leading-relaxed pt-1.5 border-t border-sky-200/70">
+              <ShieldAlert className="w-3.5 h-3.5 text-water-600 mr-2 mt-0.5 shrink-0" />
               <span>
                 Resilience Reserve of{' '}
-                <strong className="text-white font-mono font-bold">
+                <strong className="text-sky-950 font-mono font-black tabular-nums">
                   {farmState.waterBudget.reserveWater.toLocaleString()} L
                 </strong>{' '}
                 simultaneously locked to guard against forecast failure.

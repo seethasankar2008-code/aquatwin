@@ -21,10 +21,10 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
   const hasCritical = fields.some((f) => f.currentStress === 'CRITICAL' || f.futureStress.plus12h === 'CRITICAL');
   const hasHigh = fields.some((f) => f.currentStress === 'HIGH' || f.futureStress.plus12h === 'HIGH');
   const riskBadge = hasCritical
-    ? { label: t.critical, color: 'text-rose-700 bg-rose-50 border-rose-200' }
+    ? { label: t.critical, color: 'text-rose-800 bg-rose-50 border-rose-200 font-bold' }
     : hasHigh
-    ? { label: t.high, color: 'text-amber-800 bg-amber-50 border-amber-200' }
-    : { label: t.moderate, color: 'text-emerald-800 bg-emerald-50 border-emerald-200' };
+    ? { label: t.high, color: 'text-amber-800 bg-amber-50 border-amber-200 font-bold' }
+    : { label: t.moderate, color: 'text-emerald-800 bg-emerald-50 border-emerald-200 font-bold' };
 
   const metrics = [
     {
@@ -33,7 +33,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: 'L',
       sub: `${waterBudget.allocatedWater.toLocaleString()} L Allocated`,
       icon: Droplet,
-      iconColor: 'text-sky-700 bg-sky-50 border-sky-200',
+      iconColor: 'text-water-600 bg-sky-50 border-sky-200',
     },
     {
       label: t.predictedDemand,
@@ -41,7 +41,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: 'L',
       sub: `Across ${fields.length} active plots`,
       icon: TrendingUp,
-      iconColor: 'text-cyan-700 bg-cyan-50 border-cyan-200',
+      iconColor: 'text-cyan-600 bg-cyan-50 border-cyan-200',
     },
     {
       label: t.deficit,
@@ -49,7 +49,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: 'Deficit',
       sub: `Avg Moisture: ${avgMoisture}%`,
       icon: Gauge,
-      iconColor: 'text-amber-700 bg-amber-50 border-amber-200',
+      iconColor: 'text-amber-600 bg-amber-50 border-amber-200',
     },
     {
       label: t.farmRisk,
@@ -57,7 +57,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       badgeColor: riskBadge.color,
       sub: `${weather.temperature}°C • ET0 ${weather.et0} mm/d`,
       icon: AlertTriangle,
-      iconColor: 'text-orange-700 bg-orange-50 border-orange-200',
+      iconColor: 'text-orange-600 bg-orange-50 border-orange-200',
     },
     {
       label: t.forecastConfidence,
@@ -65,7 +65,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: '',
       sub: `Rain Prob: ${weather.rainfallProbability}% (${weather.uncertaintyLevel})`,
       icon: CloudRain,
-      iconColor: 'text-blue-700 bg-blue-50 border-blue-200',
+      iconColor: 'text-sky-600 bg-sky-50 border-sky-200',
     },
     {
       label: t.resilienceReserve,
@@ -73,40 +73,40 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
       unit: 'L',
       sub: `${Math.round((waterBudget.reserveWater / waterBudget.availableWater) * 100)}% dynamic buffer`,
       icon: ShieldCheck,
-      iconColor: 'text-teal-700 bg-teal-50 border-teal-200',
+      iconColor: 'text-teal-600 bg-teal-50 border-teal-200',
     },
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-3.5">
       {metrics.map((m, idx) => {
         const Icon = m.icon;
         return (
           <div
             key={idx}
-            className="bg-white rounded-2xl p-4 border border-sky-100 shadow-2xs hover:shadow-xs hover:border-sky-300 transition-all flex flex-col justify-between"
+            className="bg-white/90 backdrop-blur-xs rounded-xl p-3.5 sm:p-4 border border-sky-200/90 shadow-sm shadow-sky-950/5 hover:border-sky-300 transition-all flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className={`text-[11px] font-bold text-slate-500 uppercase tracking-tight truncate ${language === 'ta' ? 'font-tamil' : ''}`}>
+                <span className={`text-[11px] font-bold text-sky-950 uppercase tracking-wider truncate ${language === 'ta' ? 'font-tamil' : ''}`}>
                   {m.label}
                 </span>
-                <div className={`p-1.5 rounded-lg border ${m.iconColor}`}>
+                <div className="p-1 rounded-md text-sky-700 bg-sky-100/80 border border-sky-200/60">
                   <Icon className="w-3.5 h-3.5" />
                 </div>
               </div>
               <div className="flex items-baseline space-x-1">
                 {m.badgeColor ? (
-                  <span className={`px-2.5 py-1 rounded-lg text-xs font-extrabold border ${m.badgeColor}`}>
+                  <span className={`px-2 py-0.5 rounded text-xs font-bold border ${m.badgeColor}`}>
                     {m.value}
                   </span>
                 ) : (
                   <div className="flex items-baseline space-x-1">
-                    <span className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight font-mono">
+                    <span className="text-xl sm:text-2xl font-black text-sky-950 tracking-tight font-mono tabular-nums">
                       {m.value}
                     </span>
                     {m.unit && (
-                      <span className="text-xs font-bold text-slate-500 font-mono">
+                      <span className="text-xs font-semibold text-slate-600 font-mono ml-0.5">
                         {m.unit}
                       </span>
                     )}
@@ -114,7 +114,7 @@ export const MetricRibbon: React.FC<MetricRibbonProps> = ({ farmState, language 
                 )}
               </div>
             </div>
-            <p className="text-[11px] text-slate-400 mt-2 truncate font-medium border-t border-slate-100 pt-1.5">
+            <p className="text-[11px] text-slate-700 mt-2 truncate font-medium border-t border-sky-100 pt-1.5">
               {m.sub}
             </p>
           </div>

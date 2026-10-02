@@ -48,18 +48,18 @@ export const WhatChangedCard: React.FC<WhatChangedCardProps> = ({ farmState, lan
   ];
 
   return (
-    <div className="bg-gradient-to-br from-amber-500/10 via-white to-sky-50/50 rounded-2xl p-5 sm:p-6 border border-amber-200/90 shadow-xs">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-amber-200/60">
+    <div className="bg-white/92 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-amber-300 shadow-sm shadow-amber-900/5">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-sky-100">
         <div className="flex items-center space-x-2">
-          <div className="p-1.5 rounded-lg bg-amber-500 text-white">
+          <div className="p-1.5 rounded-lg bg-amber-500 text-white font-bold shadow-xs">
             <RefreshCw className="w-4 h-4 animate-spin-slow" />
           </div>
           <div>
-            <h3 className="text-base font-extrabold text-slate-900 tracking-tight">
+            <h3 className="text-sm font-black uppercase tracking-wider text-sky-950 font-display">
               {t.whatChanged}
             </h3>
-            <p className="text-xs text-slate-600">
-              Active Mode: <strong className="text-amber-800 uppercase font-mono">{activeScenario}</strong>
+            <p className="text-xs text-slate-700 font-medium">
+              Active Mode: <strong className="text-amber-800 uppercase font-mono font-bold">{activeScenario}</strong>
             </p>
           </div>
         </div>
@@ -76,16 +76,16 @@ export const WhatChangedCard: React.FC<WhatChangedCardProps> = ({ farmState, lan
           return (
             <div
               key={i}
-              className="bg-white rounded-xl p-3 border border-sky-100 shadow-2xs"
+              className="bg-sky-50/70 rounded-lg p-3 border border-sky-200 shadow-xs"
             >
-              <div className="flex items-center space-x-1.5 text-slate-500 text-xs mb-1.5">
+              <div className="flex items-center space-x-1.5 text-slate-800 text-xs mb-1.5">
                 <Icon className="w-3.5 h-3.5 text-amber-600" />
-                <span className="font-semibold truncate">{c.label}</span>
+                <span className="font-bold truncate">{c.label}</span>
               </div>
               <div className="flex items-center space-x-2 text-sm">
-                <span className="text-slate-400 line-through font-mono font-medium">{c.from}</span>
+                <span className="text-slate-500 line-through font-mono font-semibold">{c.from}</span>
                 <ArrowRight className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                <span className={`font-bold font-mono ${c.alert ? 'text-amber-700' : 'text-slate-900'}`}>
+                <span className={`font-black font-mono ${c.alert ? 'text-amber-900' : 'text-sky-950'}`}>
                   {c.to}
                 </span>
               </div>
@@ -95,7 +95,7 @@ export const WhatChangedCard: React.FC<WhatChangedCardProps> = ({ farmState, lan
       </div>
 
       {/* Dynamic Summary Statement */}
-      <div className="p-3 bg-white/80 rounded-xl border border-amber-200/70 text-xs text-slate-800 leading-relaxed">
+      <div className="p-3.5 bg-amber-50/70 rounded-lg border border-amber-200/80 text-xs text-slate-800 leading-relaxed">
         <span className="font-bold text-amber-900 mr-1.5 uppercase tracking-wide">
           {language === 'ta' ? 'தகவமைப்பு காரணம்:' : 'Adaptation Rationale:'}
         </span>

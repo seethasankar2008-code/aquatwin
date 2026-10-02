@@ -30,7 +30,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
   return (
     <form onSubmit={handleSubmit} className="space-y-6 animate-in fade-in duration-200">
       <div>
-        <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+        <h3 className="text-xl font-bold font-display text-slate-900 tracking-tight">
           CREATE YOUR FARM
         </h3>
         <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -41,7 +41,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Farm Name */}
         <div className="space-y-1.5 sm:col-span-2">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-tight block">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-tight block">
             Farm Name
           </label>
           <input
@@ -50,13 +50,13 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
             placeholder="e.g. Green Valley Farm"
             value={profile.farmName}
             onChange={(e) => onChange({ farmName: e.target.value })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
           />
         </div>
 
         {/* Location */}
         <div className="space-y-1.5 sm:col-span-2">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-tight block">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-tight block">
             Location
           </label>
           <div className="relative">
@@ -67,14 +67,14 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
               placeholder="e.g. Thanjavur, Tamil Nadu"
               value={profile.location}
               onChange={(e) => onChange({ location: e.target.value })}
-              className="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+              className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
             />
           </div>
         </div>
 
         {/* Total Farm Area & Unit */}
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-tight block">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-tight block">
             Total Farm Area
           </label>
           <input
@@ -84,18 +84,18 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
             required
             value={profile.totalArea || ''}
             onChange={(e) => onChange({ totalArea: Number(e.target.value) })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-tight block">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-tight block">
             Area Unit
           </label>
           <select
             value={profile.areaUnit}
             onChange={(e) => onChange({ areaUnit: e.target.value as 'Acres' | 'Hectares' })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
           >
             <option value="Acres">Acres</option>
             <option value="Hectares">Hectares</option>
@@ -104,13 +104,13 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
 
         {/* Primary Water Source */}
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-tight block">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-tight block">
             Primary Water Source
           </label>
           <select
             value={profile.waterSource}
             onChange={(e) => onChange({ waterSource: e.target.value as any })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
           >
             <option value="Farm Pond">Farm Pond</option>
             <option value="Borewell">Borewell</option>
@@ -123,7 +123,7 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
 
         {/* Available Water & Unit */}
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-700 uppercase tracking-tight block">
+          <label className="text-xs font-semibold text-slate-700 uppercase tracking-tight block">
             Available Water Pool
           </label>
           <div className="flex space-x-2">
@@ -134,12 +134,12 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
               required
               value={profile.availableWater || ''}
               onChange={(e) => onChange({ availableWater: Number(e.target.value) })}
-              className="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+              className="flex-1 px-3.5 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
             />
             <select
               value={profile.waterUnit}
               onChange={(e) => onChange({ waterUnit: e.target.value as 'Litres' | 'Kilolitres' })}
-              className="w-28 px-2 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-slate-50/50"
+              className="w-28 px-2 py-2.5 rounded-lg border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-water-500/20 focus:border-water-500 bg-white"
             >
               <option value="Litres">Litres (L)</option>
               <option value="Kilolitres">Kilolitres (kL)</option>
@@ -148,17 +148,17 @@ export const CreateFarmStep: React.FC<CreateFarmStepProps> = ({
         </div>
       </div>
 
-      <div className="p-3.5 rounded-2xl bg-sky-50 border border-sky-200 text-xs text-sky-950 flex items-start space-x-2.5">
-        <Droplets className="w-4 h-4 text-sky-700 shrink-0 mt-0.5" />
+      <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start space-x-2.5">
+        <Droplets className="w-4 h-4 text-water-600 shrink-0 mt-0.5" />
         <p className="leading-relaxed">
-          <strong>Note:</strong> You do not need to enter temperature, rainfall probability, or future stress. AquaTwin's autonomous intelligence calculates those automatically.
+          <strong className="text-slate-900 font-semibold">Note:</strong> You do not need to enter temperature, rainfall probability, or future stress. AquaTwin's autonomous intelligence calculates those automatically.
         </p>
       </div>
 
       <div className="flex justify-end pt-2">
         <button
           type="submit"
-          className="flex items-center space-x-2 px-6 py-3 rounded-xl bg-sky-900 hover:bg-sky-850 text-white font-extrabold text-xs shadow-md transition-all active:scale-98"
+          className="flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-water-600 hover:bg-water-500 text-white font-bold text-xs shadow-xs transition-colors"
         >
           <span>Continue to Add Fields</span>
           <ArrowRight className="w-4 h-4" />

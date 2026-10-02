@@ -90,23 +90,23 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden"
+        className="bg-white rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl border border-slate-200/90 overflow-hidden text-slate-800"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Header with Stepper */}
-        <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/70 shrink-0">
+        <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 shrink-0">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-xl bg-sky-950 text-cyan-400 border border-sky-800 flex items-center justify-center shadow-xs">
+            <div className="w-9 h-9 rounded-lg bg-water-50 text-water-600 border border-water-200/60 flex items-center justify-center shadow-xs">
               <Droplets className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-sm tracking-tight text-slate-900 uppercase">
+                <span className="font-bold font-display text-sm tracking-tight text-slate-900 uppercase">
                   Farm Setup & Twin Creation
                 </span>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-100 text-cyan-900 border border-cyan-200">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-water-50 text-water-700 border border-water-200/60">
                   Onboarding
                 </span>
               </div>
@@ -118,7 +118,7 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -126,29 +126,29 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
 
         {/* Stepper Progress Bar */}
         {step < 4 && (
-          <div className="px-6 py-3 border-b border-slate-100 bg-white grid grid-cols-3 gap-2 shrink-0">
+          <div className="px-6 py-3 border-b border-slate-100 bg-slate-50/40 grid grid-cols-3 gap-2.5 shrink-0">
             {/* Step 1 */}
             <button
               type="button"
               onClick={() => setStep(1)}
-              className={`flex items-center space-x-2 text-left p-1.5 rounded-xl transition-all ${
-                step === 1 ? 'bg-sky-50 border border-sky-200' : 'opacity-70 hover:opacity-100'
+              className={`flex items-center space-x-2 text-left p-2 rounded-lg transition-all ${
+                step === 1 ? 'bg-white border border-water-500 shadow-xs' : 'opacity-70 hover:opacity-100'
               }`}
             >
               <div
-                className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-extrabold ${
+                className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold ${
                   step > 1
                     ? 'bg-emerald-600 text-white'
                     : step === 1
-                    ? 'bg-sky-900 text-white'
+                    ? 'bg-water-600 text-white'
                     : 'bg-slate-200 text-slate-600'
                 }`}
               >
                 {step > 1 ? <Check className="w-3.5 h-3.5" /> : '1'}
               </div>
               <div className="hidden sm:block">
-                <span className="text-[11px] font-bold block text-slate-800 leading-tight">01 Farm Setup</span>
-                <span className="text-[9px] text-slate-500 block">Baseline Parameters</span>
+                <span className="text-[11px] font-bold block text-slate-900 leading-tight">01 Farm Setup</span>
+                <span className="text-[10px] text-slate-500 block">Baseline Parameters</span>
               </div>
             </button>
 
@@ -156,24 +156,24 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
             <button
               type="button"
               onClick={() => setStep(2)}
-              className={`flex items-center space-x-2 text-left p-1.5 rounded-xl transition-all ${
-                step === 2 ? 'bg-sky-50 border border-sky-200' : 'opacity-70 hover:opacity-100'
+              className={`flex items-center space-x-2 text-left p-2 rounded-lg transition-all ${
+                step === 2 ? 'bg-white border border-water-500 shadow-xs' : 'opacity-70 hover:opacity-100'
               }`}
             >
               <div
-                className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-extrabold ${
+                className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold ${
                   step > 2
                     ? 'bg-emerald-600 text-white'
                     : step === 2
-                    ? 'bg-sky-900 text-white'
+                    ? 'bg-water-600 text-white'
                     : 'bg-slate-200 text-slate-600'
                 }`}
               >
                 {step > 2 ? <Check className="w-3.5 h-3.5" /> : '2'}
               </div>
               <div className="hidden sm:block">
-                <span className="text-[11px] font-bold block text-slate-800 leading-tight">02 Field Setup</span>
-                <span className="text-[9px] text-slate-500 block">Plots & Photos</span>
+                <span className="text-[11px] font-bold block text-slate-900 leading-tight">02 Field Setup</span>
+                <span className="text-[10px] text-slate-500 block">Plots & Photos</span>
               </div>
             </button>
 
@@ -181,20 +181,20 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
             <button
               type="button"
               onClick={() => fields.length > 0 && setStep(3)}
-              className={`flex items-center space-x-2 text-left p-1.5 rounded-xl transition-all ${
-                step === 3 ? 'bg-sky-50 border border-sky-200' : 'opacity-70 hover:opacity-100'
+              className={`flex items-center space-x-2 text-left p-2 rounded-lg transition-all ${
+                step === 3 ? 'bg-white border border-water-500 shadow-xs' : 'opacity-70 hover:opacity-100'
               }`}
             >
               <div
-                className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-extrabold ${
-                  step === 3 ? 'bg-sky-900 text-white' : 'bg-slate-200 text-slate-600'
+                className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold ${
+                  step === 3 ? 'bg-water-600 text-white' : 'bg-slate-200 text-slate-600'
                 }`}
               >
                 3
               </div>
               <div className="hidden sm:block">
-                <span className="text-[11px] font-bold block text-slate-800 leading-tight">03 Review & Launch</span>
-                <span className="text-[9px] text-slate-500 block">Autonomous Twin</span>
+                <span className="text-[11px] font-bold block text-slate-900 leading-tight">03 Review & Launch</span>
+                <span className="text-[10px] text-slate-500 block">Autonomous Twin</span>
               </div>
             </button>
           </div>
@@ -234,26 +234,26 @@ export const FarmOnboardingModal: React.FC<FarmOnboardingModalProps> = ({
           {step === 4 && (
             <div className="py-16 flex flex-col items-center justify-center text-center space-y-6">
               <div className="relative">
-                <div className="w-20 h-20 rounded-3xl bg-sky-950 flex items-center justify-center text-cyan-400 border border-sky-800 shadow-xl animate-pulse">
-                  <Sparkles className="w-10 h-10" />
+                <div className="w-20 h-20 rounded-2xl bg-water-50 flex items-center justify-center text-water-600 border border-water-200/60 shadow-lg animate-pulse">
+                  <Droplets className="w-10 h-10" />
                 </div>
-                <span className="absolute -top-1 -right-1 flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-cyan-500" />
+                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-water-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-water-500" />
                 </span>
               </div>
 
               <div className="space-y-2 max-w-md">
-                <h3 className="text-2xl font-black text-slate-900 tracking-tight">
+                <h3 className="text-xl font-bold font-display text-slate-900 tracking-tight">
                   INITIALIZING DIGITAL FARM TWIN
                 </h3>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   Calibrating {fields.length} zones for {profile.farmName}... Running FAO-56 evapotranspiration models and dynamic resilience reserves.
                 </p>
               </div>
 
               <div className="w-64 bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                <div className="bg-gradient-to-r from-cyan-500 to-sky-700 h-2 rounded-full animate-[progress_1.2s_ease-in-out_infinite]" style={{ width: '85%' }} />
+                <div className="bg-water-600 h-2 rounded-full animate-[progress_1.2s_ease-in-out_infinite]" style={{ width: '85%' }} />
               </div>
             </div>
           )}

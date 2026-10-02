@@ -16,69 +16,69 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
       case 'CRITICAL':
         return {
           bg: 'bg-rose-500',
-          ring: 'ring-rose-200',
-          text: 'text-rose-700',
+          ring: 'ring-rose-500/30',
+          text: 'text-rose-400',
           label: 'CRITICAL',
         };
       case 'HIGH':
         return {
           bg: 'bg-amber-500',
-          ring: 'ring-amber-200',
-          text: 'text-amber-700',
+          ring: 'ring-amber-500/30',
+          text: 'text-amber-400',
           label: 'HIGH',
         };
       case 'MODERATE':
         return {
           bg: 'bg-yellow-400',
-          ring: 'ring-yellow-100',
-          text: 'text-yellow-700',
+          ring: 'ring-yellow-400/30',
+          text: 'text-yellow-300',
           label: 'MODERATE',
         };
       case 'LOW':
       default:
         return {
           bg: 'bg-emerald-500',
-          ring: 'ring-emerald-100',
-          text: 'text-emerald-700',
+          ring: 'ring-emerald-500/30',
+          text: 'text-emerald-400',
           label: 'LOW',
         };
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-2xs">
+    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-sky-200/90 shadow-sm shadow-sky-950/5">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-sky-100">
         <div>
           <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4 text-sky-600" />
-            <h3 className="text-base font-bold text-slate-900">{t.farmFuture}</h3>
+            <Clock className="w-4 h-4 text-water-600" />
+            <h3 className="text-sm font-black uppercase tracking-wider text-sky-950 font-display">{t.farmFuture}</h3>
           </div>
-          <p className="text-xs text-slate-500">{t.stressTrajectory}</p>
+          <p className="text-xs text-slate-700 font-medium mt-0.5">{t.stressTrajectory}</p>
         </div>
 
         {/* Legend */}
-        <div className="flex items-center space-x-3 text-[11px] text-slate-500 font-medium">
+        <div className="flex items-center space-x-3 text-[11px] text-slate-700 font-semibold">
           <span className="flex items-center">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-1" />
+            <span className="w-2 h-2 rounded-full bg-emerald-500 mr-1.5" />
             {t.healthy}
           </span>
           <span className="flex items-center">
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-400 mr-1" />
+            <span className="w-2 h-2 rounded-full bg-yellow-400 mr-1.5" />
             {t.moderate}
           </span>
           <span className="flex items-center">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500 mr-1" />
+            <span className="w-2 h-2 rounded-full bg-amber-500 mr-1.5" />
             {t.high}
           </span>
           <span className="flex items-center">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-500 mr-1" />
+            <span className="w-2 h-2 rounded-full bg-rose-500 mr-1.5" />
             {t.critical}
           </span>
         </div>
       </div>
 
       {/* Trajectory Table / Visual Pipeline */}
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {fields.map((field) => {
           const sNow = getStepColor(field.futureStress.now);
           const s6 = getStepColor(field.futureStress.plus6h);
@@ -88,14 +88,14 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
           return (
             <div
               key={field.id}
-              className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-sky-50/40 border border-sky-100/80 hover:bg-sky-50/70 transition-colors gap-3"
+              className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-lg bg-sky-50/60 border border-sky-200/70 hover:bg-sky-50/90 hover:border-sky-300 transition-colors gap-3"
             >
               {/* Field Identity */}
               <div className="w-full sm:w-48 shrink-0">
-                <span className="font-bold text-xs text-slate-900 block truncate">
+                <span className="font-black text-xs text-sky-950 block truncate font-display">
                   {field.name}
                 </span>
-                <span className="text-[11px] text-slate-500 block">
+                <span className="text-[11px] text-slate-700 font-medium block">
                   {field.crop} • <span className="italic">{field.growthStage}</span>
                 </span>
               </div>
@@ -103,10 +103,10 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
               {/* 4-Step Horizon */}
               <div className="flex-1 grid grid-cols-4 gap-2 items-center">
                 {/* NOW */}
-                <div className="flex items-center space-x-1.5 bg-white p-1.5 rounded-lg border border-slate-200/80">
-                  <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${sNow.bg}`} />
+                <div className="flex items-center space-x-1.5 bg-white/95 p-2 rounded-lg border border-sky-200/80 shadow-xs">
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${sNow.bg}`} />
                   <div className="truncate">
-                    <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">
+                    <span className="text-[9px] uppercase tracking-wider text-slate-500 block font-bold">
                       {t.now}
                     </span>
                     <span className={`text-[10px] font-bold ${sNow.text}`}>
@@ -116,8 +116,8 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
                 </div>
 
                 {/* +6H */}
-                <div className="flex items-center space-x-1.5 bg-white p-1.5 rounded-lg border border-slate-200/80">
-                  <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${s6.bg}`} />
+                <div className="flex items-center space-x-1.5 bg-white p-2 rounded-lg border border-slate-200/80 shadow-xs">
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${s6.bg}`} />
                   <div className="truncate">
                     <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">
                       {t.plus6h}
@@ -129,8 +129,8 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
                 </div>
 
                 {/* +12H */}
-                <div className="flex items-center space-x-1.5 bg-white p-1.5 rounded-lg border border-slate-200/80">
-                  <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${s12.bg}`} />
+                <div className="flex items-center space-x-1.5 bg-white p-2 rounded-lg border border-slate-200/80 shadow-xs">
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${s12.bg}`} />
                   <div className="truncate">
                     <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">
                       {t.plus12h}
@@ -142,8 +142,8 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
                 </div>
 
                 {/* +24H */}
-                <div className="flex items-center space-x-1.5 bg-white p-1.5 rounded-lg border border-slate-200/80">
-                  <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${s24.bg}`} />
+                <div className="flex items-center space-x-1.5 bg-white p-2 rounded-lg border border-slate-200/80 shadow-xs">
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${s24.bg}`} />
                   <div className="truncate">
                     <span className="text-[9px] uppercase tracking-wider text-slate-400 block font-semibold">
                       {t.plus24h}
@@ -157,8 +157,8 @@ export const FarmFutureTrajectory: React.FC<FarmFutureTrajectoryProps> = ({ fiel
 
               {/* Action indicator */}
               <div className="text-right shrink-0">
-                <span className="text-[10px] text-slate-400 block">Allocated</span>
-                <span className="text-xs font-bold text-aqua-700 font-mono">
+                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Allocated</span>
+                <span className="text-xs font-bold text-slate-900 font-mono">
                   {field.allocation.toLocaleString()} L
                 </span>
               </div>

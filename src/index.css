@@ -4,18 +4,36 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-tamil: 'Noto Sans Tamil', 'Inter', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-tamil: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
   }
 
   body {
     font-family: var(--font-sans);
-    color: #0f172a;
-    background-color: #f0f9ff;
+    color: #0c1e33;
+    background-color: #e0f2fe;
+    background-image: 
+      radial-gradient(ellipse 90% 50% at 50% -15%, rgba(186, 230, 253, 0.75) 0%, transparent 65%),
+      radial-gradient(ellipse 70% 45% at 100% 40%, rgba(199, 243, 254, 0.65) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 45% at 0% 70%, rgba(186, 230, 253, 0.7) 0%, transparent 60%),
+      radial-gradient(circle at 50% 115%, rgba(125, 211, 252, 0.45) 0%, transparent 60%),
+      linear-gradient(180deg, #ecf7ff 0%, #e0f2fe 35%, #e0f7fa 70%, #dbeafe 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
-    letter-spacing: -0.011em;
+    letter-spacing: -0.012em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
   }
 
   .font-tamil {
@@ -24,11 +42,11 @@
   }
 }
 
-/* Range input styling for climate-tech sliders */
+/* Range input styling for crystal water sliders */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  background: #e2e8f0;
+  background: #bae6fd;
   border-radius: 9999px;
   height: 6px;
   outline: none;
@@ -43,13 +61,13 @@ input[type="range"]::-webkit-slider-thumb {
   background: #0284c7;
   cursor: pointer;
   border: 2.5px solid #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
   transition: transform 0.15s ease, background 0.15s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  background: #0369a1;
+  background: #0ea5e9;
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -59,32 +77,154 @@ input[type="range"]::-moz-range-thumb {
   background: #0284c7;
   cursor: pointer;
   border: 2.5px solid #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
   transition: transform 0.15s ease, background 0.15s ease;
 }
 
-/* Subtle clean pulse without distraction */
-@keyframes subtlePulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.75; }
+/* Water Bubble Keyframe Animations */
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(110vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(55vh) translateX(25px) scale(1);
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-80px) translateX(-20px) scale(1.15);
+    opacity: 0;
+  }
 }
 
-.animate-subtle-pulse {
-  animation: subtlePulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Splitting Bubble Animation: ascends, elongates, divides into twin droplets */
+@keyframes bubbleSplitLeft {
+  0% {
+    transform: translateY(105vh) translateX(0) scale(0.85);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+    transform: translateY(75vh) translateX(5px) scale(1);
+  }
+  45% {
+    /* Elongating before split */
+    transform: translateY(50vh) translateX(8px) scale(1.2, 0.85);
+  }
+  55% {
+    /* Split moment: separate outward to left */
+    transform: translateY(40vh) translateX(-28px) scale(0.65);
+    opacity: 0.65;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-60px) translateX(-45px) scale(0.5);
+    opacity: 0;
+  }
 }
 
-/* Custom scrollbars */
+@keyframes bubbleSplitRight {
+  0% {
+    transform: translateY(105vh) translateX(0) scale(0.85);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+    transform: translateY(75vh) translateX(5px) scale(1);
+  }
+  45% {
+    /* Elongating before split */
+    transform: translateY(50vh) translateX(8px) scale(1.2, 0.85);
+  }
+  55% {
+    /* Split moment: separate outward to right */
+    transform: translateY(40vh) translateX(32px) scale(0.65);
+    opacity: 0.65;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-60px) translateX(48px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-bubble-rise {
+  animation: bubbleRise linear infinite;
+}
+
+.animate-bubble-split-left {
+  animation: bubbleSplitLeft linear infinite;
+}
+
+.animate-bubble-split-right {
+  animation: bubbleSplitRight linear infinite;
+}
+
+/* Rain Drop Falling Animation */
+@keyframes rainDropFall {
+  0% {
+    transform: translateY(-90px) rotate(-12deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.7;
+  }
+  88% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(105vh) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+/* Concentric Water Surface Ripple Animation */
+@keyframes waterRipple {
+  0% {
+    transform: scale(0.15);
+    opacity: 0.8;
+  }
+  45% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.animate-rain-fall {
+  animation: rainDropFall linear infinite;
+  will-change: transform, opacity;
+}
+
+.animate-water-ripple {
+  animation: waterRipple cubic-bezier(0.1, 0.7, 0.3, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Custom crystal water scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f0f9ff;
+  background: #f0f7ff;
 }
 ::-webkit-scrollbar-thumb {
   background: #bae6fd;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7dd3fc;
+  background: #38bdf8;
 }

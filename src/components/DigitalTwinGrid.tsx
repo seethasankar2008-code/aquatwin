@@ -46,27 +46,27 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
       case 'CRITICAL':
         return { 
           label: t.critical, 
-          bg: 'bg-rose-50 text-rose-800 border-rose-300',
-          dot: 'bg-rose-600'
+          bg: 'bg-rose-50 text-rose-750 border-rose-200 font-bold',
+          dot: 'bg-rose-500'
         };
       case 'HIGH':
         return { 
           label: t.high, 
-          bg: 'bg-amber-50 text-amber-800 border-amber-300',
+          bg: 'bg-amber-50 text-amber-800 border-amber-200 font-bold',
           dot: 'bg-amber-500'
         };
       case 'MODERATE':
         return { 
           label: t.moderate, 
-          bg: 'bg-yellow-50 text-yellow-800 border-yellow-300',
-          dot: 'bg-yellow-500'
+          bg: 'bg-sky-50 text-sky-800 border-sky-200 font-bold',
+          dot: 'bg-sky-500'
         };
       case 'LOW':
       default:
         return { 
           label: t.healthy, 
-          bg: 'bg-emerald-50 text-emerald-800 border-emerald-300',
-          dot: 'bg-emerald-600'
+          bg: 'bg-emerald-50 text-emerald-800 border-emerald-200 font-bold',
+          dot: 'bg-emerald-500'
         };
     }
   };
@@ -75,20 +75,20 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className={`text-base sm:text-lg font-extrabold text-slate-900 tracking-tight ${language === 'ta' ? 'font-tamil' : ''}`}>
+          <h3 className={`text-base sm:text-lg font-black font-display text-sky-950 tracking-tight ${language === 'ta' ? 'font-tamil' : ''}`}>
             {t.digitalFarmTwin}
           </h3>
           <p className="text-xs text-slate-500">
             {t.digitalFarmTwinSub}
           </p>
         </div>
-        <span className="text-[11px] font-bold text-sky-800 bg-sky-50 px-3 py-1 rounded-full border border-sky-200 shadow-2xs">
+        <span className="text-[11px] font-bold text-water-700 bg-sky-100/70 px-3 py-1 rounded-full border border-sky-200/80 shadow-xs">
           {fields.length} Active Zones
         </span>
       </div>
 
       {/* Grid of Farm Plots */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
         {fields.map((field) => {
           const stressBadge = getStressBadge(field.currentStress);
           const isSelected = field.id === activeId;
@@ -98,37 +98,39 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
             <div
               key={field.id}
               onClick={() => handleFieldClick(field.id)}
-              className={`relative bg-white rounded-2xl p-5 border cursor-pointer transition-all duration-200 hover:shadow-md ${
+              className={`relative bg-white/95 rounded-xl p-4 sm:p-4.5 border cursor-pointer transition-all duration-150 hover:shadow-md ${
                 isSelected
-                  ? 'border-cyan-500 ring-2 ring-cyan-400/40 shadow-sm'
+                  ? 'border-water-600 ring-2 ring-water-500/30 shadow-md'
                   : isTopPriority
-                  ? 'border-amber-300/80 bg-amber-50/15 hover:border-amber-400'
-                  : 'border-sky-100/90 hover:border-sky-300 shadow-2xs'
+                  ? 'border-amber-300 bg-amber-50/25 hover:border-amber-400'
+                  : 'border-sky-200/90 hover:border-sky-300 shadow-xs'
               }`}
             >
               {/* Top Row: Field ID, Crop, and Stress Badge */}
-              <div className="flex items-start justify-between mb-3.5">
+              <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center space-x-2.5">
-                  <div className={`p-2 rounded-xl border ${
+                  <div className={`p-1.5 rounded-lg border ${
                     isTopPriority 
-                      ? 'bg-amber-100/80 text-amber-800 border-amber-200' 
-                      : 'bg-sky-50 text-sky-800 border-sky-100'
+                      ? 'bg-amber-100/80 text-amber-900 border-amber-300' 
+                      : 'bg-sky-50 text-water-700 border-sky-200'
                   }`}>
                     <Sprout className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-extrabold text-slate-900 flex items-center space-x-1.5">
+                    <h4 className="text-sm font-black text-sky-950 flex items-center space-x-1.5 font-display">
                       <span>{field.name}</span>
                       {isTopPriority && (
-                        <span className="px-1.5 py-0.2 bg-amber-500 text-white text-[9px] rounded-md font-extrabold uppercase tracking-wider">
-                          PRIORITY
+                        <span className="px-1.5 py-0.2 bg-amber-100 text-amber-900 text-[9px] rounded font-bold uppercase tracking-wider border border-amber-300">
+                          Priority
                         </span>
                       )}
                     </h4>
-                    <p className="text-xs text-slate-500 flex items-center space-x-1.5 flex-wrap">
-                      <span className="font-semibold text-slate-700">{field.crop}</span> • <span className="italic">{field.growthStage}</span>
+                    <p className="text-xs text-slate-600 flex items-center space-x-1.5 flex-wrap font-medium">
+                      <span className="font-bold text-slate-800">{field.crop}</span>
+                      <span>•</span>
+                      <span className="italic">{field.growthStage}</span>
                       {field.visualAnalysis && (
-                        <span className="inline-flex items-center space-x-0.5 px-1.5 py-0.2 rounded-md bg-cyan-50 text-cyan-900 text-[9px] font-extrabold border border-cyan-200">
+                        <span className="inline-flex items-center space-x-0.5 px-1.5 py-0.2 rounded bg-sky-100 text-water-800 text-[9px] font-bold border border-sky-300">
                           <span>📷 Visual</span>
                         </span>
                       )}
@@ -136,28 +138,28 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                   </div>
                 </div>
 
-                <span className={`inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border uppercase tracking-wider ${stressBadge.bg}`}>
+                <span className={`inline-flex items-center space-x-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${stressBadge.bg}`}>
                   <span className={`w-1.5 h-1.5 rounded-full ${stressBadge.dot}`} />
                   <span>{stressBadge.label}</span>
                 </span>
               </div>
 
-              {/* Moisture Bar Gauge */}
-              <div className="my-3 bg-sky-50/60 rounded-xl p-3 border border-sky-100/80">
-                <div className="flex justify-between items-center text-xs mb-1.5">
-                  <span className="text-slate-500 font-semibold">{t.soilMoisture}:</span>
-                  <span className="font-extrabold font-mono text-slate-900">
-                    {field.soilMoisture}% <span className="text-slate-400 font-normal">/ {field.targetMoisture}% target</span>
+              {/* Direct Moisture Progress Track */}
+              <div className="my-2.5 space-y-1">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="text-slate-700 font-semibold text-[11px]">{t.soilMoisture}:</span>
+                  <span className="font-black font-mono tabular-nums text-sky-950 text-xs">
+                    {field.soilMoisture}% <span className="text-slate-500 font-normal text-[11px]">/ {field.targetMoisture}% target</span>
                   </span>
                 </div>
-                <div className="w-full bg-slate-200/80 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-sky-100/80 rounded-full h-2 overflow-hidden border border-sky-200/50">
                   <div
-                    className={`h-2 rounded-full transition-all duration-500 ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       field.soilMoisture < 25
                         ? 'bg-rose-500'
                         : field.soilMoisture < 40
                         ? 'bg-amber-500'
-                        : 'bg-emerald-500'
+                        : 'bg-water-600'
                     }`}
                     style={{ width: `${Math.min(100, (field.soilMoisture / field.targetMoisture) * 100)}%` }}
                   />
@@ -165,38 +167,38 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
               </div>
 
               {/* Allocation & Priority Details */}
-              <div className="grid grid-cols-2 gap-2 pt-2.5 border-t border-sky-100/70 text-xs">
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-sky-100 text-xs">
                 <div>
-                  <span className="text-[11px] font-bold text-slate-400 block uppercase tracking-tight">{t.allocationL}</span>
-                  <span className="font-extrabold text-sky-800 text-sm font-mono block">
+                  <span className="text-[10px] font-bold text-slate-600 block uppercase tracking-tight">{t.allocationL}</span>
+                  <span className="font-black text-water-700 text-xs sm:text-sm font-mono block tabular-nums">
                     {field.allocation.toLocaleString()} L
                   </span>
-                  <span className="text-[10px] text-slate-400 font-mono block">
+                  <span className="text-[10px] text-slate-600 font-medium font-mono block tabular-nums">
                     Demand: {field.waterDemand.toLocaleString()} L
                   </span>
                 </div>
                 <div>
-                  <span className="text-[11px] font-bold text-slate-400 block uppercase tracking-tight">{t.priorityScore}</span>
+                  <span className="text-[10px] font-bold text-slate-600 block uppercase tracking-tight">{t.priorityScore}</span>
                   <div className="flex items-center space-x-1">
-                    <span className="font-extrabold text-slate-900 text-sm font-mono">
+                    <span className="font-black text-sky-950 text-xs sm:text-sm font-mono tabular-nums">
                       {field.priorityScore}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-mono">/ 100</span>
+                    <span className="text-[10px] text-slate-500 font-mono font-medium">/ 100</span>
                   </div>
-                  <span className="text-[10px] text-sky-700 font-semibold block">
-                    Marginal Benefit: {field.marginalBenefit}/100
+                  <span className="text-[10px] text-slate-700 font-medium block truncate">
+                    Benefit: {field.marginalBenefit}/100
                   </span>
                 </div>
               </div>
 
               {/* Bottom Quick Horizon Tag */}
-              <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 bg-sky-50/70 px-3 py-1.5 rounded-lg border border-sky-100">
-                <span className="flex items-center text-slate-600">
+              <div className="mt-2.5 flex items-center justify-between text-[11px] text-slate-700 font-medium pt-2 border-t border-sky-100">
+                <span className="flex items-center">
                   <Clock className="w-3.5 h-3.5 mr-1 text-slate-400" />
-                  +12h Horizon: <strong className="ml-1 text-slate-900 font-semibold">{field.futureStress.plus12h}</strong>
+                  +12h: <strong className="ml-1 text-slate-800 font-semibold">{field.futureStress.plus12h}</strong>
                 </span>
-                <span className="flex items-center text-sky-700 font-bold group-hover:translate-x-0.5 transition-transform">
-                  Telemetry <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                <span className="flex items-center text-water-600 font-semibold group-hover:translate-x-0.5 transition-transform text-xs">
+                  Inspect <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                 </span>
               </div>
             </div>
@@ -206,100 +208,100 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
 
       {/* Field Intelligence Detail Modal/Drawer if selected */}
       {selectedField && (
-        <div className="mt-4 bg-slate-900 text-white rounded-3xl p-6 sm:p-7 border border-slate-700/80 shadow-2xl animate-in fade-in duration-200">
-          <div className="flex items-start justify-between border-b border-slate-800 pb-4">
+        <div className="mt-4 bg-white text-slate-800 rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-md animate-in fade-in duration-200">
+          <div className="flex items-start justify-between border-b border-slate-100 pb-3.5">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 uppercase tracking-wider">
-                  FIELD INTELLIGENCE DOSSIER
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-water-50 text-water-700 border border-water-200 uppercase tracking-wider">
+                  Field Intelligence Dossier
                 </span>
                 <span className="text-xs text-slate-400 font-mono">ID: {selectedField.id}</span>
               </div>
-              <h4 className="text-xl sm:text-2xl font-extrabold text-white mt-1.5">
+              <h4 className="text-lg sm:text-xl font-bold font-display text-slate-900 mt-1">
                 {selectedField.name} — {selectedField.crop} ({selectedField.growthStage})
               </h4>
             </div>
             <button
               onClick={() => handleFieldClick(selectedField.id)}
-              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             {/* Agronomic Profile */}
-            <div className="bg-slate-800/80 rounded-2xl p-4.5 border border-slate-700/70">
-              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center">
-                <Sprout className="w-4 h-4 mr-1.5 text-emerald-400" />
+            <div className="bg-slate-50/80 rounded-xl p-4 border border-slate-200/80">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2.5 flex items-center">
+                <Sprout className="w-4 h-4 mr-1.5 text-emerald-600" />
                 Agronomic Parameters
               </h5>
-              <div className="space-y-2.5 text-xs">
+              <div className="space-y-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Field Area:</span>
-                  <span className="font-semibold text-white">{selectedField.area} Hectares</span>
+                  <span className="text-slate-500">Field Area:</span>
+                  <span className="font-medium text-slate-900">{selectedField.area} Hectares</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Soil Classification:</span>
-                  <span className="font-semibold text-white">{selectedField.soilType}</span>
+                  <span className="text-slate-500">Soil Classification:</span>
+                  <span className="font-medium text-slate-900">{selectedField.soilType}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Current Root Moisture:</span>
-                  <span className="font-bold text-amber-400 font-mono">{selectedField.soilMoisture}%</span>
+                  <span className="text-slate-500">Current Root Moisture:</span>
+                  <span className="font-bold text-amber-600 font-mono">{selectedField.soilMoisture}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Field Capacity Target:</span>
-                  <span className="font-semibold text-white font-mono">{selectedField.targetMoisture}%</span>
+                  <span className="text-slate-500">Field Capacity Target:</span>
+                  <span className="font-medium text-slate-900 font-mono">{selectedField.targetMoisture}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Yield Sensitivity (Ky):</span>
-                  <span className="font-bold text-aqua-300 font-mono">{selectedField.stageSensitivityKy} (High)</span>
+                  <span className="text-slate-500">Yield Sensitivity (Ky):</span>
+                  <span className="font-bold text-water-700 font-mono">{selectedField.stageSensitivityKy} (High)</span>
                 </div>
               </div>
             </div>
 
             {/* Decision & Marginal Benefit */}
-            <div className="bg-slate-800/80 rounded-2xl p-4.5 border border-slate-700/70">
-              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center">
-                <Droplet className="w-4 h-4 mr-1.5 text-cyan-400" />
+            <div className="bg-slate-50/80 rounded-xl p-4 border border-slate-200/80">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2.5 flex items-center">
+                <Droplet className="w-4 h-4 mr-1.5 text-water-600" />
                 Optimization Metrics
               </h5>
-              <div className="space-y-2.5 text-xs">
+              <div className="space-y-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Recommended Allocation:</span>
-                  <span className="font-extrabold text-cyan-300 text-sm font-mono">
+                  <span className="text-slate-500">Recommended Allocation:</span>
+                  <span className="font-bold text-water-700 text-xs sm:text-sm font-mono">
                     {selectedField.allocation.toLocaleString()} L
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Agronomic Water Demand:</span>
-                  <span className="font-semibold text-white font-mono">{selectedField.waterDemand.toLocaleString()} L</span>
+                  <span className="text-slate-500">Agronomic Water Demand:</span>
+                  <span className="font-medium text-slate-900 font-mono">{selectedField.waterDemand.toLocaleString()} L</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Priority Score:</span>
-                  <span className="font-bold text-amber-400 font-mono">{selectedField.priorityScore}/100 ({selectedField.priorityLevel})</span>
+                  <span className="text-slate-500">Priority Score:</span>
+                  <span className="font-bold text-amber-600 font-mono">{selectedField.priorityScore}/100 ({selectedField.priorityLevel})</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Marginal Water Benefit:</span>
-                  <span className="font-bold text-cyan-400 font-mono">{selectedField.marginalBenefit}/100</span>
+                  <span className="text-slate-500">Marginal Water Benefit:</span>
+                  <span className="font-bold text-water-700 font-mono">{selectedField.marginalBenefit}/100</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Decision Confidence:</span>
-                  <span className="font-semibold text-white font-mono">{selectedField.confidence}%</span>
+                  <span className="text-slate-500">Decision Confidence:</span>
+                  <span className="font-medium text-slate-900 font-mono">{selectedField.confidence}%</span>
                 </div>
               </div>
             </div>
 
             {/* Why This Decision Factors */}
-            <div className="bg-slate-800/80 rounded-2xl p-4.5 border border-slate-700/70">
-              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center">
-                <ShieldCheck className="w-4 h-4 mr-1.5 text-cyan-400" />
+            <div className="bg-slate-50/80 rounded-xl p-4 border border-slate-200/80">
+              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-800 mb-2.5 flex items-center">
+                <ShieldCheck className="w-4 h-4 mr-1.5 text-water-600" />
                 Why this allocation?
               </h5>
-              <ul className="space-y-2 text-xs text-slate-300">
+              <ul className="space-y-1.5 text-xs text-slate-600">
                 {selectedField.reasons.map((r, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="text-cyan-400 mr-2 font-bold">•</span>
+                    <span className="text-water-600 mr-2 font-bold">•</span>
                     <span>{r}</span>
                   </li>
                 ))}
@@ -309,15 +311,15 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
 
           {/* Field Visual Observation Card (if present) */}
           {selectedField.visualAnalysis && (
-            <div className="mt-5 p-4.5 rounded-2xl bg-slate-800/90 border border-cyan-500/40 shadow-inner">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-700/80 mb-3">
+            <div className="mt-5 p-4.5 rounded-2xl bg-sky-50/70 border border-sky-200 shadow-xs">
+              <div className="flex items-center justify-between pb-3 border-b border-sky-200/80 mb-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-sm">📷</span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-cyan-300">
+                  <span className="text-xs font-bold uppercase tracking-wider text-water-700">
                     Field Visual Analysis (Qualitative Observation)
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-mono">
+                <span className="text-[10px] text-slate-500 font-mono">
                   Captured: {selectedField.visualAnalysis.timestamp}
                 </span>
               </div>
@@ -327,34 +329,34 @@ export const DigitalTwinGrid: React.FC<DigitalTwinGridProps> = ({
                   <img
                     src={selectedField.visualAnalysis.photoUrl}
                     alt={selectedField.name}
-                    className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-xl border border-slate-600 shrink-0 shadow-md"
+                    className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-xl border border-sky-200 shrink-0 shadow-sm"
                   />
                 )}
                 <div className="space-y-2 flex-1 text-xs">
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
-                      <span className="text-[10px] text-slate-400 block">Canopy Appearance</span>
-                      <span className="font-extrabold text-emerald-400 mt-0.5 block">{selectedField.visualAnalysis.cropAppearance}</span>
+                    <div className="bg-white p-2 rounded-xl border border-sky-200/70">
+                      <span className="text-[10px] text-slate-500 block">Canopy Appearance</span>
+                      <span className="font-extrabold text-emerald-600 mt-0.5 block">{selectedField.visualAnalysis.cropAppearance}</span>
                     </div>
-                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
-                      <span className="text-[10px] text-slate-400 block">Surface Moisture</span>
-                      <span className="font-extrabold text-cyan-300 mt-0.5 block">{selectedField.visualAnalysis.surfaceCondition}</span>
+                    <div className="bg-white p-2 rounded-xl border border-sky-200/70">
+                      <span className="text-[10px] text-slate-500 block">Surface Moisture</span>
+                      <span className="font-extrabold text-water-600 mt-0.5 block">{selectedField.visualAnalysis.surfaceCondition}</span>
                     </div>
-                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
-                      <span className="text-[10px] text-slate-400 block">Visible Stress</span>
-                      <span className="font-extrabold text-amber-300 mt-0.5 block">{selectedField.visualAnalysis.visibleStress}</span>
+                    <div className="bg-white p-2 rounded-xl border border-sky-200/70">
+                      <span className="text-[10px] text-slate-500 block">Visible Stress</span>
+                      <span className="font-extrabold text-amber-600 mt-0.5 block">{selectedField.visualAnalysis.visibleStress}</span>
                     </div>
-                    <div className="bg-slate-900/60 p-2 rounded-xl border border-slate-700/60">
-                      <span className="text-[10px] text-slate-400 block">Visual Confidence</span>
-                      <span className="font-extrabold text-slate-200 mt-0.5 block">{selectedField.visualAnalysis.confidence}</span>
+                    <div className="bg-white p-2 rounded-xl border border-sky-200/70">
+                      <span className="text-[10px] text-slate-500 block">Visual Confidence</span>
+                      <span className="font-extrabold text-slate-800 mt-0.5 block">{selectedField.visualAnalysis.confidence}</span>
                     </div>
                   </div>
 
-                  <p className="text-slate-300 leading-relaxed italic bg-slate-900/40 p-2.5 rounded-xl border border-slate-700/40">
+                  <p className="text-slate-700 leading-relaxed italic bg-white/80 p-2.5 rounded-xl border border-sky-200/60">
                     "{selectedField.visualAnalysis.observation}"
                   </p>
 
-                  <p className="text-[10px] text-slate-400 font-medium">
+                  <p className="text-[10px] text-slate-500 font-medium">
                     ⚠️ {selectedField.visualAnalysis.disclaimer}
                   </p>
                 </div>

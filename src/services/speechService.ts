@@ -1,9 +1,41 @@
 import { FarmState, Language } from '../types/farm';
+import { isGeminiConfigured, askGeminiFarmAssistant } from './geminiService';
 
 export interface SpeechStatus {
   isSpeaking: boolean;
   isListening: boolean;
   supported: boolean;
+}
+
+export interface FarmQuestionResult {
+  text: string;
+  source: 'gemini' | 'local';
+}
+
+/**
+ * Asynchronously answers farmer questions using Gemini 3.8 Flash (if configured)
+ * or instant local deterministic logic.
+ */
+export async function answerFarmQuestionAsync(
+  question: string,
+  farmState: FarmState,
+  language: Language
+): Promise<FarmQuestionResult> {
+  if (isGeminiConfigured()) {
+    try {
+      const geminiAnswer = await askGeminiFarmAssistant(question, farmState, language);
+      if (geminiAnswer && geminiAnswer.trim().length > 0) {
+        return { text: geminiAnswer, source: 'gemini' };
+      }
+    } catch (e) {
+      console.warn('Gemini question answering failed, using local telemetry:', e);
+    }
+  }
+
+  return {
+    text: answerFarmQuestion(question, farmState, language),
+    source: 'local',
+  };
 }
 
 /**

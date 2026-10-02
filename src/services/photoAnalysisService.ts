@@ -1,4 +1,5 @@
 import { FieldVisualAnalysis, CropAppearance, SurfaceCondition, VisibleCropStress, VisualConfidence, CropType, GrowthStage, SoilType } from '../types/farm';
+import { isGeminiConfigured, analyzePhotoWithGemini } from './geminiService';
 
 export interface PhotoAnalysisRequest {
   imageFile?: File;
@@ -8,17 +9,63 @@ export interface PhotoAnalysisRequest {
   soilType?: SoilType | string;
 }
 
+function fileToBase64(file: File): Promise<{ base64: string; mimeType: string }> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      const parts = dataUrl.split(',');
+      const header = parts[0] || '';
+      const base64 = parts[1] || '';
+      const mimeType = header.match(/:(.*?);/)?.[1] || file.type || 'image/jpeg';
+      resolve({ base64, mimeType });
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 /**
  * Isolated Visual Observation Service
  * Strictly adheres to non-overclaiming rules:
  * - Does NOT output fake numerical moisture percentages.
  * - Does NOT decide water volume or overrides core agronomic math.
  * - Outputs honest qualitative observations with realistic confidence.
+ * - Powered by Google Gemini 3.8 Flash when API key is active, with seamless deterministic fallback.
  */
 export async function analyzeFieldPhoto(request: PhotoAnalysisRequest): Promise<FieldVisualAnalysis> {
-  const { crop, growthStage, imageUrl } = request;
+  const { crop, growthStage, imageUrl, imageFile, soilType } = request;
 
-  // Simulate real-world computer vision latency (800ms - 1200ms)
+  // Try live multimodal computer vision with Gemini 3.8 Flash if configured
+  if (isGeminiConfigured() && (imageFile || imageUrl)) {
+    try {
+      let base64Data: string | undefined;
+      let mimeType: string | undefined;
+
+      if (imageFile) {
+        const converted = await fileToBase64(imageFile);
+        base64Data = converted.base64;
+        mimeType = converted.mimeType;
+      }
+
+      const geminiResult = await analyzePhotoWithGemini({
+        base64Data,
+        mimeType,
+        imageUrl,
+        crop: String(crop),
+        growthStage: String(growthStage),
+        soilType: soilType ? String(soilType) : undefined,
+      });
+
+      if (geminiResult) {
+        return geminiResult;
+      }
+    } catch (err) {
+      console.warn('Gemini vision analysis failed, falling back to deterministic agronomic model:', err);
+    }
+  }
+
+  // Simulate real-world computer vision latency (800ms - 1200ms) for offline mode
   await new Promise((resolve) => setTimeout(resolve, 950));
 
   // Determine realistic visual observations based on crop type and phenological stage

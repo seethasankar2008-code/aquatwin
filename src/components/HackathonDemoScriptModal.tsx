@@ -77,28 +77,28 @@ export const HackathonDemoScriptModal: React.FC<HackathonDemoScriptModalProps> =
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200/90 max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto text-slate-800">
         <div className="flex items-start justify-between pb-4 border-b border-slate-100">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="p-1 rounded-md bg-amber-100 text-amber-900 border border-amber-200">
-                <Award className="w-4 h-4" />
+              <span className="p-1 rounded-md bg-amber-50 text-amber-700 border border-amber-200">
+                <Award className="w-4 h-4 text-amber-600" />
               </span>
-              <span className="text-xs font-bold text-amber-900 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-amber-700 uppercase tracking-wider">
                 HACK4VALUES JUDGING GUIDE
               </span>
             </div>
-            <h3 className="text-xl font-extrabold text-slate-900 mt-1">
+            <h3 className="text-xl font-bold text-slate-900 mt-1 font-display">
               3-Minute Competition Demo Walkthrough
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-600 mt-0.5">
               Follow these 8 steps to demonstrate all 4 judging criteria: Adaptiveness (30%), Water-Efficiency (25%), Innovation (20%), and Demo (25%).
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -108,10 +108,10 @@ export const HackathonDemoScriptModal: React.FC<HackathonDemoScriptModalProps> =
           {steps.map((s) => (
             <div
               key={s.step}
-              className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 transition-colors"
+              className="p-4 rounded-xl bg-slate-50/70 border border-slate-200/80 hover:border-slate-300 transition-colors"
             >
               <div className="flex items-baseline justify-between mb-1.5">
-                <span className="font-extrabold text-xs text-sky-950">
+                <span className="font-bold text-xs text-slate-900 font-display">
                   Step {s.step}: {s.title}
                 </span>
                 <button
@@ -119,30 +119,30 @@ export const HackathonDemoScriptModal: React.FC<HackathonDemoScriptModalProps> =
                     onJumpToTab(s.tab);
                     onClose();
                   }}
-                  className="text-[11px] font-bold text-sky-700 hover:text-sky-900 flex items-center"
+                  className="text-[11px] font-semibold text-water-600 hover:text-water-700 flex items-center"
                 >
                   Jump to screen <ChevronRight className="w-3 h-3 ml-0.5" />
                 </button>
               </div>
 
-              <blockquote className="text-xs italic text-slate-700 bg-white p-3 rounded-xl border border-slate-100 my-2 leading-relaxed">
+              <blockquote className="text-xs italic text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-xs my-2 leading-relaxed">
                 {s.say}
               </blockquote>
 
-              <p className="text-[11px] text-slate-500 font-medium">
-                <strong className="text-slate-800">Action:</strong> {s.action}
+              <p className="text-[11px] text-slate-600 font-medium">
+                <strong className="text-slate-900">Action:</strong> {s.action}
               </p>
             </div>
           ))}
         </div>
 
         <div className="flex justify-between items-center pt-4 border-t border-slate-100">
-          <span className="text-xs font-extrabold text-sky-950 font-serif italic">
+          <span className="text-xs font-bold text-water-700 font-display italic tracking-wide">
             EVERY DROP IS A DECISION.
           </span>
           <button
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl bg-sky-900 hover:bg-sky-850 text-white font-bold text-xs shadow-xs transition-all active:scale-98"
+            className="px-5 py-2.5 rounded-lg bg-water-600 hover:bg-water-500 text-white font-bold text-xs shadow-xs transition-colors"
           >
             Close Guide
           </button>
